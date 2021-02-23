@@ -12,6 +12,7 @@
 */
 use App\Producto;
 Route::get('/', function () {
+    /*
     $productos=Producto::all();
     foreach($productos as $producto){
         echo $producto->nombre."<br/>";
@@ -25,5 +26,10 @@ Route::get('/', function () {
         echo "<hr/>";
     }
     die();
+    */
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
