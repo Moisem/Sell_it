@@ -10,7 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Producto;
 Route::get('/', function () {
+    $productos=Producto::all();
+    foreach($productos as $producto){
+        echo $producto->nombre."<br/>";
+        echo $producto->precio."<br/>";
+        echo $producto->user->name.''.$producto->user->apellidopaterno;
+        echo '<h4>Comentarios</h4>';
+        foreach($producto->comentario as $comment){
+            echo $comment->user->name."<br/>";
+            echo $comment->Contenido."<br/>";
+        }
+        echo "<hr/>";
+    }
+    die();
     return view('welcome');
 });
