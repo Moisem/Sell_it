@@ -16,10 +16,10 @@ class CreateComentariosTable extends Migration
         Schema::create('comentarios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('Contenido');
-            $table->bigInteger('users_id')->unsigned();
-            $table->foreign('users_id')->references('id')->on('users');
-            $table->bigInteger('productos_id')->unsigned();
-            $table->foreign('productos_id')->references('id')->on('productos');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('producto_id')->unsigned();
+            $table->foreign('producto_id')->references('id')->on('productos');
             $table->timestamps();
         });
     }

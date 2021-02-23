@@ -19,8 +19,8 @@ class CreateSuscripcionesTable extends Migration
             $table->date('fechafin');
             $table->double('total');
             $table->enum('estado',['activa','vencida']);
-            $table->bigInteger('membresias_id')->unsigned();
-            $table->foreign('membresias_id')->references('id')->on('membresias');
+            $table->bigInteger('membresia_id')->unsigned();
+            $table->foreign('membresia_id')->references('id')->on('membresias');
             $table->timestamps();
         });
     }
