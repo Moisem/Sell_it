@@ -21,10 +21,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm" >
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm" >
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    SellIt(Foto)
+                <img src="{{asset('images/sellit.svg')}}" class="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="">Inicio</a>
+                                <a class="nav-link" href="{{ url('/home') }}">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">Productos</a>
@@ -71,7 +71,7 @@
                                     <a class="dropdown-item" href="">
                                        Mis Productos
                                     </a>
-                                    <a class="dropdown-item" href="">
+                                    <a class="dropdown-item" href="{{ route('producto.create') }}">
                                        Subir Producto
                                     </a>
                                     

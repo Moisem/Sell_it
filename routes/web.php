@@ -37,3 +37,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/MiPerfil', 'UserController@miperfil')->name('miperfil');
 Route::post('/MiPerfil/update', 'UserController@update')->name('user.update');
 Route::get('/MiPerfil/image/{filename}', 'UserController@getImage')->name('user.image');
+//productos
+Route::get('/subirproducto', 'ProductoController@create')->name('producto.create');
+Route::post('/subirproducto/guardar', 'ProductoController@save')->name('producto.save');
+Route::get('/image/{filename}', 'ProductoController@getImage')->name('producto.image');
