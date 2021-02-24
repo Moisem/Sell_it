@@ -1,5 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+ form .image{
+    width: 55px;
+    margin-bottom: 15px;
+}
+.navbar .container .image{
+  width: 35px;
+  height: 35px;
+  border-radius: 900px;
+  overflow: hidden;
+}
+.navbar .container .image .img{
+  height: 100%;
+  
+}
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

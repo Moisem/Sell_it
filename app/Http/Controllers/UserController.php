@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function miperfil(){
         return view('user.miperfil');
     }
@@ -35,9 +42,21 @@ class UserController extends Controller
         $user->numtelefonico = $numtelefonico;
         $user->email = $email;
 
+        //subir imagen
+        $imagen = $request->file('image');
+        if($imagen){
+            $imagen_name= time().$imagen->getClientOriginalName();
+            Storage::disk('users')->put($imagen_name, File::get($imagen));
+            $user->image = $imagen_name;
+        }
+
         $user->update();
         return redirect()->route('miperfil')
                             ->with(['message'=>'Usuario actulizado correctamente']);
 
+    }
+    public function getImage($filename){
+        $file = Storage::disk('users')->get($filename);
+        return new Response($file,200);
     }
 }
