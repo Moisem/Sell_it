@@ -10,10 +10,30 @@
   border-radius: 900px;
   overflow: hidden;
 }
-.navbar .container .image .img{
+.pub_producto .container-image .image{
+  width: 35px;
+  height: 35px;
+  border-radius: 900px;
+  overflow: hidden;
+  float:left;
+  margin-right: 15px;
+}
+.pub_producto .nombre-user{
+    font-weight:bold;
+    line-height: 35px;
+}
+
+.navbar .container .image .img,
+.pub_producto .container-image .img{
   height: 100%;
   
 }
+.logo{
+        width: 55px;
+        margin-bottom: 10px 0px;
+        height: 55px;
+        margin-right:10px;
+    }
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

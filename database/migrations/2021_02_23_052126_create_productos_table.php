@@ -21,10 +21,11 @@ class CreateProductosTable extends Migration
             $table->enum('garantia',['Fabrica','Vendedor','Sin']);
             $table->integer('noexiencia');
             $table->string('descripcion');
+            $table->string('image');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->bigInteger('categoria_id')->unsigned();
-            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->nullable();
             $table->timestamps();
         });
     }

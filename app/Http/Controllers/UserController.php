@@ -52,7 +52,7 @@ class UserController extends Controller
 
         $user->update();
         return redirect()->route('miperfil')
-                            ->with(['message'=>'Usuario actulizado correctamente']);
+                            ->with(['message'=>'Perfil actulizado correctamente']);
 
     }
     public function getImage($filename){
