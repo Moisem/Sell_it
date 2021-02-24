@@ -33,3 +33,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//usuarios
+Route::get('/MiPerfil', 'UserController@miperfil')->name('miperfil');
+Route::post('/MiPerfil/update', 'UserController@update')->name('user.update');
