@@ -86,6 +86,9 @@
                                     </form>
                                 </div>
                             </li>
+                            <li>
+                            @include('includes.fotoperfil')
+                            </li>
                         @endguest
                     </ul>
                 </div>
