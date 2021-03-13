@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Categoria;
 class Producto extends Model
 {
     protected $table = 'productos';
@@ -17,6 +17,6 @@ class Producto extends Model
         return $this->belongsTo('App\User','user_id');
     }
     public function categoria(){
-        return $this->belongTo('App\Categoria','categoria_id');
+        return $this->belongsTo(Categoria::class);
     }
 }

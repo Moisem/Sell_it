@@ -19,7 +19,7 @@ class CreateProductosTable extends Migration
             $table->double('precio');
             $table->enum('estado',['Vendido','Disponible']);
             $table->enum('garantia',['Fabrica','Vendedor','Sin']);
-            $table->integer('noexiencia');
+            $table->integer('existencia');
             $table->string('descripcion');
             $table->string('image');
             $table->bigInteger('user_id')->unsigned();

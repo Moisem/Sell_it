@@ -1,0 +1,224 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+.img-index{
+    display: flex;
+}
+.izquierda{
+    background-color: #000;
+    height: 75vh;
+    width: 55%;
+    color: #fff;
+    font-family: 'Teko', sans-serif;
+}
+.derecha{
+    background-size: cover;
+    background-position:center;
+    background-image: url('https://i.pinimg.com/originals/cb/fa/92/cbfa924ae956f63184221fe0ceb9da83.jpg');
+    height: 75vh;
+    width: 45%;
+}
+.title{
+    font-family: 'Monoton', cursive;
+    font-size: 6em;
+    padding: 40px .3em;
+}
+.title-info{
+    font-size: 1.1em;
+}
+.info-content{
+    max-width: 20em;
+    font-size: 2em;
+    padding:0 .3em;
+}
+.login-index{
+    border: 2px solid #fff;
+    padding: 10px 15px;
+    font-size: .7em;
+    width: 9em;
+    color: #fff;
+    margin-top: 1em;
+}
+.login-index:hover{
+    color: #000;
+    background-color: #fff;
+}
+.nav-link{
+    color: #000;
+}
+.nav-link:hover{
+    background-color: black;
+    color: #FFF;
+}
+.title-index, .promotion-index{
+    text-align: center;
+}
+/*--------Mi perfil-----------*/
+.thead-products{
+    background-color:  #ed4c3f ;
+}
+.table-products{
+    width: 90%;
+    overflow-x: auto;
+}
+.table{
+    width:100%;
+}
+tr:only-child:hover td{
+    background-color:  #c8c6c6 ;
+}
+.img-profile img{
+    max-width: 9.5em;
+    text-align: center;
+}
+.btn-publicar{
+    margin-top: .8em;
+    background-color: #1fa7b0;
+    color: #fff;
+}
+.btn-publicar:hover{
+    background-color:  #000;
+    color: #FFF;
+}
+aside{
+    text-align: center;
+    height: 100%;
+}
+/*----------------Productos------------------*/
+.products{
+    max-width: 23em;
+    min-width: 16em;
+    margin: auto;
+    margin-top: 1.25em;
+    padding: 0 ;
+    background-color:#fff;
+    box-shadow: 5px 5px 9px;
+    border-radius: 8px;
+}
+.body-product{
+    text-align: center;
+    height: 7.6em;
+    padding: 0 .7em;
+}
+.ver-mas{
+    background-color:#000 ;
+    color: #FFF;
+    width: 80%;
+}
+.ver-mas:hover{
+    background-color: #FE5A55 ;
+    color: #FFF;
+}
+.body-product h2{
+    font-size: 1.3em;
+    padding-top:5px;
+}
+.body-product p{
+    margin-bottom: 5px;
+}
+.img-product img{
+    width: 100%;
+    min-height: 23em;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    max-height: 23em;
+}
+/*-------------------Membrecias-------------------*/
+.promotion{
+    max-width: 23em;
+    min-width: 16em;
+    margin:auto;
+    padding: 1.5em 0;
+}
+.promotion-card{
+    background-color:#fff;
+    min-height: 32em;
+    box-shadow: 1px 1px 8px;
+    margin: auto;
+}
+.title-promotion h3{
+    font-size: 35px;
+    height: 3em;
+    margin: 0;
+    display: flex;
+    color:#fff;
+    border: 6px solid rgb(14, 185, 86);
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgb(14, 185, 86) 45%, rgb(44, 43, 43));
+    box-shadow: 0 8px 20px;
+}
+.body-promotion{
+    padding: 1em 3em 1em 3em;
+    height: 20em;
+}
+.body-promotion h2{
+    font-size: 6rem;
+}
+.body-promotion p{
+    font-size: 1em;
+}
+.footer-promotion{
+    padding-top: 2em;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+.elegir{
+    background: linear-gradient(to right, rgb(14, 185, 86) 40%, rgb(44, 43, 43));
+    color: #fff;
+    padding: .7em;
+    width: 80%;
+    font-size: 1.1em;
+    border-radius: 17px;
+    
+}
+.line-basico{
+    background-color: rgb(59, 165, 103);
+    height: 2px;
+}
+.elegir:hover{
+    background: linear-gradient(to right, rgb(0,0,0) 1%, rgb(14, 185, 86));
+    color: #fff;
+}
+
+/*----------------footer--------------*/
+.footer-content{
+    min-height: 390px;
+    background-color: #000;
+    padding: 40px 20px;
+    color: #fff;
+}
+.footer-redes{
+    background-color: #1fa7b0;
+    min-height: 80px;
+    padding: 10px;
+    margin-bottom: 60px;
+}
+
+.footer-info{
+    min-height: 120px;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 80%;
+    text-align: center;
+}
+.footer-buttons a{
+    text-align: center;
+    border: solid 1.7px #fff;
+    color: #fff;
+    margin: 0 2px;
+    width: 200px;
+}
+.footer-buttons a:hover{
+    background-color: #fff;
+    color: #000;
+}
+.footer-pie{
+    width: 60%;
+    min-height: 70px;
+    margin: auto;
+    text-align: center;
+}

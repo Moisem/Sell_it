@@ -34,10 +34,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //usuarios
-Route::get('/MiPerfil', 'UserController@miperfil')->name('miperfil');
-Route::post('/MiPerfil/update', 'UserController@update')->name('user.update');
+//Route::post('/MiPerfil/update', 'UserController@update')->name('user.update');
 Route::get('/MiPerfil/image/{filename}', 'UserController@getImage')->name('user.image');
+Route::get('/MiPerfil', 'UserController@index')->name('miperfil');
+Route::delete('/MiPerfil/{id}', 'UserController@destroy')->name('user.delete');
 //productos
-Route::get('/subirproducto', 'ProductoController@create')->name('producto.create');
-Route::post('/subirproducto/guardar', 'ProductoController@save')->name('producto.save');
+Route::get('/MiPerfil/create', 'ProductoController@create')->name('producto.create');
+Route::post('/MiPerfil/guardar', 'ProductoController@store')->name('producto.store');
 Route::get('/image/{filename}', 'ProductoController@getImage')->name('producto.image');
+Route::get('/producto/{id}', 'ProductoController@show')->name('producto.show');
+
+//welcome
+Route::get('/', 'welcomeController@index')->name('welcome');

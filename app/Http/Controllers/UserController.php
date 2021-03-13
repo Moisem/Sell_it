@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Producto;
+use App\User;
+use App\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -18,7 +22,7 @@ class UserController extends Controller
     }
     public function update(Request $request){
         //Conseguir usuario
-        $user = \Auth::user();
+        $user = Auth::user();
         $id = $user->id;
         //Validacion del formularios
         $validate = $this->validate($request,[
@@ -58,5 +62,24 @@ class UserController extends Controller
     public function getImage($filename){
         $file = Storage::disk('users')->get($filename);
         return new Response($file,200);
+    }
+
+    public function index(){
+        $user=User::with('productos')->findOrFail(auth()->user()->id);
+        return view('user.miperfil',[
+            'usuario'=>$user
+        ]);
+    }   
+
+    public function destroy(Producto $id){
+        $id->delete();
+        return redirect()->route('miperfil');
+    }
+
+    public function category(){
+        $categorias=Categoria::all();
+        return view('user.create',[
+            'categoria'=>$categorias
+        ]);
     }
 }

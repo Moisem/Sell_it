@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Producto;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $productos = Producto::orderBy('id', 'desc')->paginate(3);
+        $user=Auth::user()->id;
+        $productos = Producto::latest()->paginate(3);
         return view('home',[
             'productos'=>$productos
         ]);
