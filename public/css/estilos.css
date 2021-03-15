@@ -95,7 +95,7 @@ aside{
     padding: 0 ;
     background-color:#fff;
     box-shadow: 5px 5px 9px;
-    border-radius: 8px;
+    
 }
 .body-product{
     text-align: center;
@@ -121,8 +121,6 @@ aside{
 .img-product img{
     width: 100%;
     min-height: 23em;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
     max-height: 23em;
 }
 /*-------------------Membrecias-------------------*/
@@ -190,6 +188,7 @@ aside{
     background-color: #000;
     padding: 40px 20px;
     color: #fff;
+    margin-top: 120px;
 }
 .footer-redes{
     background-color: #1fa7b0;
@@ -220,5 +219,53 @@ aside{
     width: 60%;
     min-height: 70px;
     margin: auto;
+    text-align: center;
+}
+
+/*----------show productos--------*/
+.show-content{
+    padding: 50px;
+}
+.show-productos{
+    padding: 0%;
+}
+.show-header{
+    height: 100px;
+    width: 100%;
+}
+.show-img{
+    background-color: #fff;
+    width: 100%;
+}
+.show-img img{
+    width: 100%;
+}
+.show-info{
+    background-color: #fff;
+    padding: 20px;
+}
+.show-description{
+    border: .5px solid rgb(216, 199, 199);
+    padding: 20px;
+    border-radius: 7px;
+}
+.btn-producto{
+    width: 100%;
+    background-color: #1fa7b0;
+}
+.show-vendedor{
+    border: .5px solid rgb(216, 199, 199);
+    padding: 20px;
+    border-radius: 7px;
+    margin-top: 20px;
+}
+.btn-visitar-perfil{
+    width: 100%;
+    background-color: #1fa7b0;
+}
+.productos-relacionados{
+    background-color: #fff;
+}
+.title-relacionados{
     text-align: center;
 }

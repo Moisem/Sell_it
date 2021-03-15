@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Producto;
 use App\Categoria;
+use App\Users;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ProductoController extends Controller
@@ -16,6 +17,14 @@ class ProductoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+    public function index()
+    {
+        $user=Auth::user()->id;
+        $productos = Producto::latest()->paginate();
+        return view('producto',[
+            'productos'=>$productos
+        ]);
     }
     public function create(){
             $categorias=Categoria::all();
@@ -64,7 +73,7 @@ class ProductoController extends Controller
         }
         $producto->save();
 
-        return redirect()->route('home')
+        return redirect()->route('producto')
                             ->with(['message'=>'Se posteo tu producto']);
     }
     public function getImage($filename){
@@ -73,9 +82,12 @@ class ProductoController extends Controller
     }
 
     public function show($id){
-        $product=Producto::findOrFail($id);
+        $product=Producto::whereId($id)->first();
+        $relacion=Producto::whereCategoria_id($product->categoria_id)->inRandomOrder()->take(3)->get();
         return view('producto.show',[
-            "producto"=>$product
+            "producto"=>$product,
+            "productos"=>$relacion
         ]);
     }
+
 }

@@ -7,6 +7,8 @@ use App\Categoria;
 class Producto extends Model
 {
     protected $table = 'productos';
+    protected $fillable=['nombre', 'precio', 'estado', 'garantia', 'existencia', 
+    'descripcion', 'image', 'user_id', 'categoria_id'];
 
     //relacion one to many = uno a muchos
     public function comentario(){
