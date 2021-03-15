@@ -46,7 +46,7 @@
                             <a class="dropdown-item" href="">
                                Mis Productos
                             </a>
-                            <a class="dropdown-item" href="">
+                            <a class="dropdown-item" href="{{ route('producto.create') }}">
                                Subir Producto
                             </a>
                             

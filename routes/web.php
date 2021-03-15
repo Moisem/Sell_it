@@ -39,8 +39,8 @@ Route::get('/MiPerfil/image/{filename}', 'UserController@getImage')->name('user.
 Route::get('/MiPerfil', 'UserController@index')->name('miperfil');
 Route::delete('/MiPerfil/{id}', 'UserController@destroy')->name('user.delete');
 //productos
-Route::get('/MiPerfil/create', 'ProductoController@create')->name('producto.create');
-Route::post('/MiPerfil/guardar', 'ProductoController@store')->name('producto.store');
+Route::get('/subirproducto', 'ProductoController@create')->name('producto.create');
+Route::post('/subirproducto/guardar', 'ProductoController@save')->name('producto.save');
 Route::get('/image/{filename}', 'ProductoController@getImage')->name('producto.image');
 //Route::get('/productos', 'ProductoController@index')->name('producto');
 Route::get('/producto/{id}', 'ProductoController@show')->name('producto.show');

@@ -27,12 +27,12 @@ class ProductoController extends Controller
         ]);
     }
     public function create(){
-            $categorias=Categoria::all();
+        $categorias=Categoria::all();
             return view('producto.create',[
                 'categoria'=>$categorias
             ]);
     }
-    public function store(Request $request){
+    public function save(Request $request){
         //validaciones
         $validate =$this->validate($request,[
                 'nombre' => ['required', 'string', 'max:255'],
@@ -41,6 +41,7 @@ class ProductoController extends Controller
                 'garantia' => ['required'],
                 'noexistencia' => ['required'],
                 'descripcion' => ['required'],
+                'categoria' => ['required'],
         ]);
 
         //recoger datos
@@ -48,22 +49,23 @@ class ProductoController extends Controller
         $precio = $request->input('precio');
         $estado = $request->input('estado');
         $garantia = $request->input('garantia');
-        $existencia = $request->input('existencia');
+        $noexistencia = $request->input('noexistencia');
         $descripcion = $request->input('descripcion');
-        $image = $request->file('image');
         $categoria=$request->input('categoria');
+        $image = $request->file('image');
+        
 
         //asiganar valores
-        $user = Auth::user();
+        $user = \Auth::user();
         $producto = new Producto();
         $producto->user_id = $user->id;
         $producto->nombre = $nombre;
         $producto->precio  = $precio;
         $producto->estado = $estado;
         $producto->garantia = $garantia;
-        $producto->existencia = $existencia;
+        $producto->noexistencia = $noexistencia;
         $producto->descripcion = $descripcion;
-        $producto->categoria_id=$categoria;
+        $producto->categoria_id = $categoria;
         //subir fichero 
         $imagen = $request->file('image');
         if($imagen){
@@ -73,7 +75,7 @@ class ProductoController extends Controller
         }
         $producto->save();
 
-        return redirect()->route('producto')
+        return redirect()->route('home')
                             ->with(['message'=>'Se posteo tu producto']);
     }
     public function getImage($filename){
