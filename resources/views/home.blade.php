@@ -26,10 +26,11 @@
                         <h6 class="card-subtitle mb-2 ">{{'Garantia: '.$producto->garantia}}</h6>
                         <h6 class="card-subtitle mb-2 ">{{'Productos existentes: '.$producto->noexiencia}}</h6>
                         <p class="card-text ">{{$producto->descripcion}}</p>
-                        <a href="{{route('producto.show', $producto)}}" class="btn btn-success">Ver Detalles</a>
                         <div class="">
                             <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
                         </div>
+                        <a href="{{route('producto.show', $producto)}}" class="btn btn-success">Ver Detalles</a>
+                        
                 </div>
             </div>
         @endforeach

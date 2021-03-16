@@ -6,7 +6,7 @@
             </div>
             <div class="show-productos col-sm-12 col-md-8">
                 <div class="show-img">
-                    <img src="https://images-eu.ssl-images-amazon.com/images/I/418csJ322SL.jpg" alt="producto">
+                <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
                 </div>
             </div>
             <div class="show-info col-sm-12 col-md-4">
@@ -22,7 +22,9 @@
                     </div>
                 </div>
                 <div class="show-vendedor">
-                    <img src="" alt="perfil">
+                @if($producto->user->image)
+                        <img src="{{ route('user.image',['filename'=>$producto->user->image]) }}" class="image">  
+                @endif
                     <h4>{{$producto->user->name}} {{$producto->user->apellidopaterno}} {{$producto->user->apellidomaterno}}</h4>
                     <p>Número: {{$producto->user->numtelefonico}}</p>
                     <P>Correo: {{$producto->user->email}}</P>
@@ -38,7 +40,7 @@
                     <div class="col-sm-12 col-md-4 products">
                         <div class="content-product">
                             <div class="img-product">
-                                <img src="https://codigofuente.io/wp-content/uploads/2019/10/estructura-de-tarjeta.jpg" alt="">
+                                <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
                             </div>
                             <div class="body-product">
                                 <h2>{{$producto->nombre}}</h2>

@@ -17,8 +17,8 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    public function miperfil(){
-        return view('user.miperfil');
+    public function modificarperfil(){
+        return view('user.modificarperfil');
     }
     public function update(Request $request){
         //Conseguir usuario

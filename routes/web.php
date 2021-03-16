@@ -34,7 +34,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //usuarios
-//Route::post('/MiPerfil/update', 'UserController@update')->name('user.update');
+    //modificar usuario
+Route::post('/MiPerfil/update', 'UserController@update')->name('user.update');
+Route::get('/MiPerfil/editar', 'UserController@modificarperfil')->name('modificarperfil');
 Route::get('/MiPerfil/image/{filename}', 'UserController@getImage')->name('user.image');
 Route::get('/MiPerfil', 'UserController@index')->name('miperfil');
 Route::delete('/MiPerfil/{id}', 'UserController@destroy')->name('user.delete');
