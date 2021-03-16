@@ -64,12 +64,6 @@ class UserController extends Controller
         return new Response($file,200);
     }
 
-    public function index(){
-        $user=User::with('productos')->findOrFail(auth()->user()->id);
-        return view('user.miperfil',[
-            'usuario'=>$user
-        ]);
-    }   
 
     public function destroy(Producto $id){
         $id->delete();
@@ -80,6 +74,12 @@ class UserController extends Controller
         $categorias=Categoria::all();
         return view('user.create',[
             'categoria'=>$categorias
+        ]);
+    }
+    public function perfil($id){
+        $user = User::find($id);
+        return view('user.miperfil',[
+            'user'=>$user
         ]);
     }
 }
