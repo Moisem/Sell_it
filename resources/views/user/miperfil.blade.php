@@ -6,9 +6,6 @@
             <aside class="datos-profile col-sm-12 col-md-3">
                 <div class="img-profile mt-5">
                 @include('includes.fotoperfil')
-                    <div class="content-modal">
-                        <a href="{{route('modificarperfil')}}" class="btn btn-publicar">Editar</a>
-                    </div>
                 </div>
                 <div class="info-profile mt-5">
                     <h3>{{$usuario->name}}  {{$usuario->apellidopaterno}}</h3>
