@@ -22,10 +22,12 @@
                     </div>
                 </div>
                 <div class="show-vendedor">
-                @if($producto->user->image)
-                        <img src="{{ route('user.image',['filename'=>$producto->user->image]) }}" class="image">  
+                <div class="name-vendedor">
+                    @if($producto->user->image)
+                        <img src="{{ route('user.image',['filename'=>$producto->user->image]) }}" class="img-profile">  
                 @endif
                     <h4>{{$producto->user->name}} {{$producto->user->apellidopaterno}} {{$producto->user->apellidomaterno}}</h4>
+                </div>
                     <p>Número: {{$producto->user->numtelefonico}}</p>
                     <P>Correo: {{$producto->user->email}}</P>
                     <a href="#" class="btn btn-visitar-perfil">Visitar perfil</a>
@@ -45,7 +47,7 @@
                             <div class="body-product">
                                 <h2>{{$producto->nombre}}</h2>
                                 <p>Precio: ${{$producto->precio}}</p>
-                                <a href="#" class=" btn ver-mas">Ver mas</a>
+                                <a href="{{route('producto.show', $producto)}}" class=" btn ver-mas">Ver mas</a>
                             </div>
                         </div>
                     </div>

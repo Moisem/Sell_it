@@ -263,16 +263,46 @@ aside{
     border-radius: 7px;
     margin-top: 20px;
 }
+.name-vendedor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+.img-profile{
+    max-width: 50px;
+    max-width: 50px;
+    margin: 0 4px;
+    border-radius: 50%;
+}
 .btn-visitar-perfil{
     width: 100%;
     background-color: #1fa7b0;
 }
 .productos-relacionados{
     background-color: #fff;
+    padding-bottom: 40px;
 }
 .title-relacionados{
     text-align: center;
 }
 .pub_producto{
-
+    margin: 30px 0;
+    box-shadow: 5px 5px 8px;
+}
+.img-content-productos{
+    max-height: 360px;
+}
+.img-publicacion{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 360px;
+    min-height: 250px;
+    padding: 10px;
+}
+.card-subtitle{
+    padding: 0 20px;
+}
+.body-card-productos{
+    padding: 0 20px;
 }

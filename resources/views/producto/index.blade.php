@@ -20,18 +20,19 @@
                 </div>
 
                 <div class="card-body">
+                    <h6 class="card-subtitle mb-2 date">{{\FormatTime::LongTimeFilter($producto->created_at) }}</h6>
+                    <div class="img-content-productos"> 
+                        <img class="img-publicacion"src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
+                    </div>
+                    <div class="body-card-productos">
                         <h5 class="card-title ">{{$producto->nombre}}</h5>
                         <h6 class="card-subtitle mb-2 ">{{'Precio: $'.$producto->precio}}</h6>
                         <h6 class="card-subtitle mb-2 ">{{$producto->estado}}</h6>
                         <h6 class="card-subtitle mb-2 ">{{'Garantia: '.$producto->garantia}}</h6>
                         <h6 class="card-subtitle mb-2 ">{{'Productos existentes: '.$producto->noexiencia}}</h6>
                         <p class="card-text ">{{$producto->descripcion}}</p>
-                        <h7 class="card-subtitle mb-2 date ">{{\FormatTime::LongTimeFilter($producto->created_at) }}</h7>
-                        <div class=""> 
-                            <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
-                        </div>
-                        <a href="{{route('producto.show', $producto)}}" class="btn btn-success">Ver Detalles</a>
-                        
+                        <a href="{{route('producto.show', $producto)}}" class="btn btn-success">Ver Detalles</a> 
+                    </div>
                 </div>
             </div>
         @endforeach
