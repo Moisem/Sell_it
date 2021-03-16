@@ -14,7 +14,7 @@
                 <div class="card-header">{{ __('Mi Perfil') }}</div>
                 <a href="{{route('miperfil')}}" class="btn btn-publicar">Ver como Visistante</a>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('user.update')}}">
+                    <form method="POST" action="{{ route('user.update')}}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">

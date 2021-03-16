@@ -40,7 +40,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             
-                            <a class="dropdown-item" href="{{ route('miperfil') }}">
+                            <a class="dropdown-item" href="{{ route('modificarperfil') }}">
                                Mi Perfil
                             </a>
                             <a class="dropdown-item" href="">
