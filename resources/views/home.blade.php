@@ -26,6 +26,7 @@
                         <h6 class="card-subtitle mb-2 ">{{'Garantia: '.$producto->garantia}}</h6>
                         <h6 class="card-subtitle mb-2 ">{{'Productos existentes: '.$producto->noexiencia}}</h6>
                         <p class="card-text ">{{$producto->descripcion}}</p>
+                        <h7 class="card-subtitle mb-2 date ">{{\FormatTime::LongTimeFilter($producto->created_at) }}</h7>
                         <div class="">
                             <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
                         </div>
