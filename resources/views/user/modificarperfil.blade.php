@@ -12,7 +12,7 @@
             @endif
             <div class="card">
                 <div class="card-header">{{ __('Mi Perfil') }}</div>
-
+                <a href="{{route('miperfil')}}" class="btn btn-publicar">Ver como Visistante</a>
                 <div class="card-body">
                     <form method="POST" action="{{ route('user.update')}}">
                         @csrf

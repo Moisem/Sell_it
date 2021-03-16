@@ -5,7 +5,7 @@
         <div class="row content-row">
             <aside class="datos-profile col-sm-12 col-md-3">
                 <div class="img-profile mt-5">
-                    <img src="https://uybor.uz/borless/uybor/img/user-images/user_no_photo_300x300.png" alt="">
+                @include('includes.fotoperfil')
                     <div class="content-modal">
                         <a href="{{route('modificarperfil')}}" class="btn btn-publicar">Editar</a>
                     </div>
