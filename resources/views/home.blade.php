@@ -1,43 +1,109 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        @include('includes.message')
-        @foreach($productos as $producto)
-            <div class="card pub_producto">
-                <div class="card-header">
-                @if($producto->user->image)
-                        <div class="container-image">
-                            <img src="{{ route('user.image',['filename'=>$producto->user->image]) }}" class="image">
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+
+        <!-- Styles -->
+    </head>
+    <body>
+        @extends('layouts.app')
+        @section('content')
+          <div class="content">
+                <section class="img-index">
+                   <div class="izquierda">
+                    <div class="container">
+                        <h1 class="title">SELL IT</h1>
+                        <div class="info-content">
+                            <h4 class="title-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                                Soluta quam aspernatur debitis repellendus sit eveniet illum 
+                                praesentium doloremque explicabo, ea e
+                            </h4>
+                            <a href="{{route('productos')}}" class="btn login-index">Iniciar</a>
                         </div>
-                @endif
-                    <div class="nombre-user">
-                        {{ $producto->user->name.' '.$producto->user->apellidopaterno}}
                     </div>
-                
-                </div>
-
-                <div class="card-body">
-                        <h5 class="card-title ">{{$producto->nombre}}</h5>
-                        <h6 class="card-subtitle mb-2 ">{{'Precio: $'.$producto->precio}}</h6>
-                        <h6 class="card-subtitle mb-2 ">{{$producto->estado}}</h6>
-                        <h6 class="card-subtitle mb-2 ">{{'Garantia: '.$producto->garantia}}</h6>
-                        <h6 class="card-subtitle mb-2 ">{{'Productos existentes: '.$producto->noexiencia}}</h6>
-                        <p class="card-text ">{{$producto->descripcion}}</p>
-                        <h7 class="card-subtitle mb-2 date ">{{\FormatTime::LongTimeFilter($producto->created_at) }}</h7>
-                        <div class="">
-                            <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
+                   </div>
+                   <div class="derecha">
+                   </div>
+                </section>
+                <section class="products-index container-fluid">
+                    <div class="title-index">
+                        <h2 class="my-5">Compra mas gastando menos</h2>
+                    </div>
+                    <div class="row">
+                        @foreach ($productos as $producto)
+                        <div class="col-sm-6 col-md-6 col-lg-4 products">
+                            <div class="content-product">
+                                <div class="img-product">
+                                    <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
+                                </div>
+                                <div class="body-product">
+                                    <h2>{{$producto->nombre}}</h2>
+                                    <p>Precio:$ {{$producto->precio}}</p>
+                                    <a href="{{route('producto.show', $producto)}}" class=" btn ver-mas">Ver mas</a>
+                                </div>
+                            </div>
                         </div>
-                        <a href="{{route('producto.show', $producto)}}" class="btn btn-success">Ver Detalles</a>
-                        
-                </div>
-            </div>
-        @endforeach
-        <div class="clearfix"></div>
-        {{$productos->links()}}
-        </div>
-    </div>
-</div>
-@endsection
+                        @endforeach
+
+                    </div>
+                </section>
+                <section class="promotion-index container-fluid">
+                    <div class="title-promotion">
+                        <h2 class="my-5">Conoce nuetras membrecias y convierte en un socio más</h2>
+                    </div>
+                    <div class="row content-row content-promotion">
+                        <div class="col-sm-4 promotion">
+                            <div class="promotion-card">
+                                <div class="title-promotion">
+                                    <h3>$150</h3>
+                                </div>
+                                <div class="body-promotion">
+                                    <h3>Basico</h3>
+                                    <hr class="line-basico">
+                                </div>
+                                <div class="footer-promotion">
+                                    <button class="btn elegir">Elegir</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 promotion">
+                            <div class="promotion-card">
+                                <div class="title-promotion">
+                                    <h3>$150</h3>
+                                </div>
+                                <div class="body-promotion">
+                                    <h3>Basico</h3>
+                                    <hr class="line-basico">
+                                </div>
+                                <div class="footer-promotion">
+                                    <button class="btn elegir">Elegir</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 promotion">
+                            <div class="promotion-card">
+                                <div class="title-promotion">
+                                    <h3>$150</h3>
+                                </div>
+                                <div class="body-promotion">
+                                    <h3>Basico</h3>
+                                    <hr class="line-basico">
+                                </div>
+                                <div class="footer-promotion">
+                                    <button class="btn elegir">Elegir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br><br><br><br>
+                </section>
+          </div>
+        @endsection
+    </body>
+</html>

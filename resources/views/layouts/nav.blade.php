@@ -28,7 +28,7 @@
                         <a class="nav-link" href="{{ url('/home') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Productos</a>
+                        <a class="nav-link" href="{{route('productos')}}">Productos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">Categorias</a>

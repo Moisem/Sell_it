@@ -22,7 +22,7 @@ class ProductoController extends Controller
     {
         $user=Auth::user()->id;
         $productos = Producto::latest()->paginate();
-        return view('producto',[
+        return view('producto.index',[
             'productos'=>$productos
         ]);
     }
@@ -75,7 +75,7 @@ class ProductoController extends Controller
         }
         $producto->save();
 
-        return redirect()->route('home')
+        return redirect()->route('productos')
                             ->with(['message'=>'Se posteo tu producto']);
     }
     public function getImage($filename){

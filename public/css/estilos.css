@@ -112,7 +112,7 @@ aside{
     color: #FFF;
 }
 .body-product h2{
-    font-size: 1.3em;
+    font-size: 1.1em;
     padding-top:5px;
 }
 .body-product p{
@@ -171,7 +171,6 @@ aside{
     width: 80%;
     font-size: 1.1em;
     border-radius: 17px;
-    
 }
 .line-basico{
     background-color: rgb(59, 165, 103);
@@ -193,7 +192,7 @@ aside{
 .footer-redes{
     background-color: #1fa7b0;
     min-height: 80px;
-    padding: 10px;
+    padding: 10px;  
     margin-bottom: 60px;
 }
 
@@ -227,7 +226,12 @@ aside{
     padding: 50px;
 }
 .show-productos{
-    padding: 0%;
+    padding: 30px;
+    background-color: #fff;
+}
+.show-productos img{
+    overflow: hidden;
+    width: 100%;
 }
 .show-header{
     height: 100px;
@@ -235,9 +239,6 @@ aside{
 }
 .show-img{
     background-color: #fff;
-    width: 100%;
-}
-.show-img img{
     width: 100%;
 }
 .show-info{
@@ -248,6 +249,8 @@ aside{
     border: .5px solid rgb(216, 199, 199);
     padding: 20px;
     border-radius: 7px;
+    background-color: #fff;
+    word-wrap: break-word;
 }
 .btn-producto{
     width: 100%;
@@ -256,6 +259,7 @@ aside{
 .show-vendedor{
     border: .5px solid rgb(216, 199, 199);
     padding: 20px;
+    word-wrap: break-word;
     border-radius: 7px;
     margin-top: 20px;
 }
@@ -268,4 +272,7 @@ aside{
 }
 .title-relacionados{
     text-align: center;
+}
+.pub_producto{
+
 }
