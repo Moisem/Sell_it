@@ -22,9 +22,17 @@
                     <p>Disponibilidad: {{$producto->noexistencia}}</p>
                     <div class="footer-producto">
                         <a href="{{route('producto.show', $producto)}}" class="btn btn-primary">Ver Detalles</a>
-                        @if(Auth::user() && Auth::user()->id == $producto->user->id)
-                        <a href="" class="btn btn-warning">Actualizar</a> 
-                        <a href="" class="btn btn-danger">Eliminar</a>
+                        @if (Route::is('misproductos'))
+                            @if(Auth::user() && Auth::user()->id == $producto->user->id)
+                            <div>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Actualizar</button>
+                                @include('includes.formproducts')
+                            </div>
+                            <form action="{{route('user.delete', $producto)}}" method="POST">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</a>
+                            </form>
+                            @endif
                         @endif
                     </div>
                 </div>

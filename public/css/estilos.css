@@ -33,24 +33,12 @@ body{
     font-size: 2em;
     padding:0 .3em;
 }
-.login-index{
-    border: 2px solid #fff;
-    padding: 10px 15px;
-    font-size: .7em;
-    width: 9em;
+.nav-item{
     color: #fff;
-    margin-top: 1em;
 }
-.login-index:hover{
-    color: #000;
-    background-color: #fff;
-}
-.nav-link{
-    color: #000;
-}
-.nav-link:hover{
-    background-color: black;
-    color: #FFF;
+.nav-item a:hover{
+    background-color: #0ed1b7;
+    color:#FFF;
 }
 .title-index, .promotion-index{
     text-align: center;
@@ -108,7 +96,7 @@ aside{
     width: 80%;
 }
 .ver-mas:hover{
-    background-color: #FE5A55 ;
+    background-color: rgb(156, 15, 98) ;
     color: #FFF;
 }
 .body-product h2{
@@ -277,7 +265,12 @@ aside{
 }
 .btn-visitar-perfil{
     width: 100%;
-    background-color: #1fa7b0;
+    background-color: rgb(156, 15, 98);
+    color: #fff;
+}
+.btn-visitar-perfil:hover{
+    background-color: #000;
+    color: #fff;
 }
 .productos-relacionados{
     background-color: #fff;
@@ -318,6 +311,9 @@ aside{
 }
 .desc-producto h2,p{
     word-wrap: break-word;
+}
+.footer-producto{
+    display: flex;
 }
 
 /*---------------Login-----------------------*/
@@ -444,5 +440,14 @@ aside{
 }
 .cuenta-exist{
     padding-top: 10px;
+    text-align: center;
+}
+
+/*----------Perfil Productos-----------*/
+.main-productos{
+    margin: auto;
+    margin-top: 50px;
+}
+.title-misproductos{
     text-align: center;
 }

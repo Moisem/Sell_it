@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Producto;
 use App\Categoria;
-use App\Users;
+use App\User;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ProductoController extends Controller
@@ -83,6 +83,22 @@ class ProductoController extends Controller
         return new Response($file,200);
     }
 
+    public function update(Producto $id){
+        //obtiene el id del producto y lo actualiza con la funcion request
+        $id->update([
+            'nombre'=>request('nombre'),
+            'precio'=>request('precio'),
+            'estado'=>request('estado'),
+            'garantia'=>request('garantia'),
+            'noexistencia'=>request('noexistencia'),
+            'descripcion'=>request('descripcion'),
+            'garantia'=>request('garantia'),
+            'categoria'=>request('categoria'),
+            'image'=>request('image'),
+        ]);
+        return redirect()->route('misproductos');
+    }
+
     public function show($id){
         $product=Producto::whereId($id)->first();
         $relacion=Producto::whereCategoria_id($product->categoria_id)->inRandomOrder()->take(3)->get();
@@ -91,5 +107,18 @@ class ProductoController extends Controller
             "productos"=>$relacion
         ]);
     }
+    public function misproductos(){
+        $categorias=Categoria::all();
+        $user=User::with('productos')->findOrFail(auth()->user()->id);
+        return view('user.misproductos',[
+            'usuario'=>$user,
+            'categoria'=>$categorias
+        ]);
+    }
+    public function destroy(Producto $id){
+        $id->delete();
+        return redirect()->route('misproductos');
+    }
+
 
 }

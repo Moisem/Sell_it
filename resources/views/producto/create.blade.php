@@ -6,8 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Subir Producto</div>
-
-
                     <div class="card-body">
                         <form method="POST" action="{{route('producto.save')}}" enctype="multipart/form-data">
                             @csrf 

@@ -1,10 +1,19 @@
 @extends('layouts.app')
 @section('content')
-    <h2>Mis Productos</h2>
-    <p>{{$usuario->name}}</p>
-    @forelse ($usuario->productos as $producto)
-        <p>Editar</a>{{$producto->nombre}}</p>
-    @empty
-        <p>Aun no tienes productos en venta<p>
-    @endforelse
+    <div class="content-misproductos container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 main-productos">
+                <div class="title-misproductos">
+                    <h2>Mis Productos</h2>
+                </div>
+                @forelse ($usuario->productos as $producto)
+                @include('includes.productos')
+                @empty
+                <div class="alert alert-success text-center my-5" role="alert">
+                    No tienes productos en venta
+                </div>
+                @endforelse
+            </div>
+        </div>
+    </div>
 @endsection

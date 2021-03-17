@@ -35,11 +35,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //usuarios
     //modificar usuario
-Route::post('/MiPerfil/update', 'UserController@update')->name('user.update');
+Route::patch('/MiPerfil/update{id}', 'ProductoController@update')->name('producto.update');
 Route::get('/MiPerfil/editar', 'UserController@modificarperfil')->name('modificarperfil');
+Route::get('/MiPerfil/MisProductos', 'ProductoController@misproductos')->name('misproductos');
 Route::get('/MiPerfil/image/{filename}', 'UserController@getImage')->name('user.image');
 Route::get('/MiPerfil/{id}', 'UserController@perfil')->name('miperfil');
-Route::delete('/MiPerfil/{id}', 'UserController@destroy')->name('user.delete');
+Route::delete('MiPerfil/MisProductos/{id}', 'ProductoController@destroy')->name('user.delete');
 //productos
 Route::get('/subirproducto', 'ProductoController@create')->name('producto.create');
 Route::post('/subirproducto/guardar', 'ProductoController@save')->name('producto.save');

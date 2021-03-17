@@ -64,18 +64,6 @@ class UserController extends Controller
         return new Response($file,200);
     }
 
-
-    public function destroy(Producto $id){
-        $id->delete();
-        return redirect()->route('miperfil');
-    }
-
-    public function category(){
-        $categorias=Categoria::all();
-        return view('user.create',[
-            'categoria'=>$categorias
-        ]);
-    }
     public function perfil($id){
         $user = User::find($id);
         return view('user.miperfil',[

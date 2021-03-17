@@ -10,7 +10,7 @@
                     <hr>
                 </div>
                 <div class="body-register">
-                    <form action="{{route('register')}}">
+                    <form action="{{route('register')}}" method="POST">
                         @csrf
                         <div class="name-register">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nombre">

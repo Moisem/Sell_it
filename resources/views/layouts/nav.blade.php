@@ -43,7 +43,7 @@
                             <a class="dropdown-item" href="{{ route('modificarperfil') }}">
                                Mi Perfil
                             </a>
-                            <a class="dropdown-item" href="">
+                            <a class="dropdown-item" href="{{route('misproductos')}}">
                                Mis Productos
                             </a>
                             <a class="dropdown-item" href="{{ route('producto.create') }}">
