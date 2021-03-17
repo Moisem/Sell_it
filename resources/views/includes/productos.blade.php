@@ -21,8 +21,13 @@
                     <p>Garantia: {{$producto->garantia}}</p>
                     <p>Disponibilidad: {{$producto->noexistencia}}</p>
                     <div class="footer-producto">
-                        <a href="{{route('producto.show', $producto)}}" class="btn btn-primary">Ver Detalles</a> 
+                        <a href="{{route('producto.show', $producto)}}" class="btn btn-primary">Ver Detalles</a>
+                        @if(Auth::user() && Auth::user()->id == $producto->user->id)
+                        <a href="" class="btn btn-warning">Actualizar</a> 
+                        <a href="" class="btn btn-danger">Eliminar</a>
+                        @endif
                     </div>
                 </div>
             </div>
+
         </div>
