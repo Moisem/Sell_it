@@ -319,3 +319,130 @@ aside{
 .desc-producto h2,p{
     word-wrap: break-word;
 }
+
+/*---------------Login-----------------------*/
+.main-login{
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+.full-content{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+.contenedor-login{
+    margin: auto;
+    width: 100%;
+    box-shadow: 5px 5px 8px;
+    height: 31.25em;
+    display: flex;
+    margin-top:1.7em;
+}
+.login-izquierda{
+    width: 45%;
+    background: url(https://images.unsplash.com/photo-1468495244123-6c6c332eeece?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Z2FkZ2V0fGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80);
+    background-size: cover;
+}
+.login-derecha{
+    background-color: #ffff;
+    padding: 1.785em;
+    width: 55%;
+}
+.title-login{
+    text-align: center;
+    margin: 1.25em 0;
+}
+.content-inputs{
+    margin-top: 3.75em;
+}
+.content-inputs input{
+    border-radius: 6px;
+    border: solid 1px #afa6a5;
+    width: 100%;
+    height: 40px;
+}
+.content-inputs input:focus{
+    border-radius: 6px;
+    border: solid 3px #0ed1b7;
+}
+.input-email{
+    margin: 20px 0;
+}
+.input-pass{
+    margin: 20px 0;
+}
+.btn-iniciar{
+    background-color: rgb(156, 15, 98);
+    color: #ffff;
+    width: 100%;
+}
+.btn-iniciar:hover{
+    background-color: #000;
+    color: #ffff;
+}
+.recuerdame{
+    margin-top: 30px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.recuerdame label{
+    margin: 0;
+    padding: 0 10px;
+}
+.recuerdame input{
+    height: 15px;
+    padding: 0 10px;
+    width: 15px;
+}
+
+/*---------------regstro------------------*/
+.registro-main{
+    background-color: aqua;
+    margin: auto;
+    margin-top: 1.7em;
+    padding: 0%;
+    display: flex;
+    background: #ffff;
+    box-shadow: 5px 5px 8px;
+}
+.register-izquierda{
+    width: 60%;
+    padding: 50px 30px;
+}
+.register-derecha{
+    width: 40%;
+    background-image: url(https://img.wallpapersafari.com/phone/1080/1920/54/22/fdrpj2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.header-register{
+    text-align: center;
+    padding: 5px 0;
+}
+.body-register input{ 
+    margin: 20px 0;
+    border-radius: 6px;
+    border: solid 1px #afa6a5;
+    width: 100%;
+    height: 40px;
+}
+.body-register input:focus{
+    border-radius: 6px;
+    border: solid 3px #0ed1b7;
+}
+.btn-registrar{
+    background-color: rgb(156, 15, 98);
+    color: #ffff;
+    width: 100%;
+}
+.btn-registrar:hover{
+    background-color: black;
+    color: #fff;
+}
+.cuenta-exist{
+    padding-top: 10px;
+    text-align: center;
+}
