@@ -83,7 +83,7 @@ class ProductoController extends Controller
         return new Response($file,200);
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $id){
         $validate =$this->validate($request,[
             'nombre' => ['required', 'string', 'max:255'],
             'precio' => ['required'],
@@ -116,11 +116,14 @@ class ProductoController extends Controller
         $producto->categoria_id = $categoria;
         $producto->image=$image;
 
-            if($image){
-                $imagen=time().$image->getClientOriginalName();
-                Storage::disk('productos')->put($imagen, File::get($image));
-                $producto->image = $imagen;
-            }
+        $imagen = $request->file('image');
+        if($imagen){
+            $imagen_name= time().$imagen->getClientOriginalName();
+            Storage::disk('productos')->put($imagen_name, File::get($imagen));
+            $producto->image = $imagen_name;
+        }
+
+        $producto->update();
             return redirect()->route('misproductos');
     }
     

@@ -9,8 +9,8 @@
           </button>
         </div>
         <div class="modal-body">
-            <form method="POST" action="{{route('producto.update', $producto)}}" enctype="multipart/form-data">
-                @csrf @method('PATCH')
+            <form method="POST" action="{{route('producto.update')}}" enctype="multipart/form-data">
+                @csrf
                 <div class="form-group row">
                     <label for="nombre" class="col-md-4 col-form-label text-md-right">Nombre del producto</label>
                     <div class="col-md-6">

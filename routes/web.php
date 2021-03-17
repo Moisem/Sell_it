@@ -35,7 +35,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //usuarios
     //modificar usuario
-Route::patch('/MiPerfil/update{id}', 'ProductoController@update')->name('producto.update');
+Route::post('/MiPerfil/update', 'UserController@update')->name('user.update');
 Route::get('/MiPerfil/editar', 'UserController@modificarperfil')->name('modificarperfil');
 Route::get('/MiPerfil/MisProductos', 'ProductoController@misproductos')->name('misproductos');
 Route::get('/MiPerfil/image/{filename}', 'UserController@getImage')->name('user.image');
