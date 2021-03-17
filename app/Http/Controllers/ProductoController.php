@@ -83,7 +83,7 @@ class ProductoController extends Controller
         return new Response($file,200);
     }
 
-    public function update(Request $request, $id){
+    public function update(Producto $id, Request $request){
         $validate =$this->validate($request,[
             'nombre' => ['required', 'string', 'max:255'],
             'precio' => ['required'],
@@ -93,37 +93,24 @@ class ProductoController extends Controller
             'descripcion' => ['required'],
             'categoria' => ['required'],
     ]);
-
-        //recoger datos
-        $nombre = $request->input('nombre');
-        $precio = $request->input('precio');
-        $estado = $request->input('estado');
-        $garantia = $request->input('garantia');
-        $noexistencia = $request->input('noexistencia');
-        $descripcion = $request->input('descripcion');
-        $categoria=$request->input('categoria');
-        $image = $request->file('image');
+            $imagen = $request->file('image');
+                if($imagen){
+                $imagen_name= time().$imagen->getClientOriginalName();
+                Storage::disk('productos')->put($imagen_name, File::get($imagen));
+                $id->image = $imagen_name;
+            }
+            $id->update([
+                'nombre'=>request('nombre'),
+                'precio'=>request('precio'),
+                'estado'=>request('estado'),
+                'garantia'=>request('garantia'),
+                'noexistencia'=>request('noexistencia'),
+                'descripcion'=>request('descripcion'),
+                'categoria'=>request('categoria'),
+                'image'=>request('image'),
+            ]);
         
 
-        //asiganar valores
-        $producto = new Producto();
-        $producto->nombre = $nombre;
-        $producto->precio  = $precio;
-        $producto->estado = $estado;
-        $producto->garantia = $garantia;
-        $producto->noexistencia = $noexistencia;
-        $producto->descripcion = $descripcion;
-        $producto->categoria_id = $categoria;
-        $producto->image=$image;
-
-        $imagen = $request->file('image');
-        if($imagen){
-            $imagen_name= time().$imagen->getClientOriginalName();
-            Storage::disk('productos')->put($imagen_name, File::get($imagen));
-            $producto->image = $imagen_name;
-        }
-
-        $producto->update();
             return redirect()->route('misproductos');
     }
     
