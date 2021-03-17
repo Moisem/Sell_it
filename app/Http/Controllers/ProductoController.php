@@ -83,20 +83,7 @@ class ProductoController extends Controller
         return new Response($file,200);
     }
 
-    public function update(Producto $id){
-        //obtiene el id del producto y lo actualiza con la funcion request
-        $id->update([
-            'nombre'=>request('nombre'),
-            'precio'=>request('precio'),
-            'estado'=>request('estado'),
-            'garantia'=>request('garantia'),
-            'noexistencia'=>request('noexistencia'),
-            'descripcion'=>request('descripcion'),
-            'garantia'=>request('garantia'),
-            'categoria'=>request('categoria'),
-            'image'=>request('image'),
-        ]);
-        return redirect()->route('misproductos');
+    public function update(Request $request){
     }
 
     public function show($id){
