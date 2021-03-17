@@ -84,8 +84,46 @@ class ProductoController extends Controller
     }
 
     public function update(Request $request){
-    }
+        $validate =$this->validate($request,[
+            'nombre' => ['required', 'string', 'max:255'],
+            'precio' => ['required'],
+            'estado' => ['required'],
+            'garantia' => ['required'],
+            'noexistencia' => ['required'],
+            'descripcion' => ['required'],
+            'categoria' => ['required'],
+    ]);
 
+        //recoger datos
+        $nombre = $request->input('nombre');
+        $precio = $request->input('precio');
+        $estado = $request->input('estado');
+        $garantia = $request->input('garantia');
+        $noexistencia = $request->input('noexistencia');
+        $descripcion = $request->input('descripcion');
+        $categoria=$request->input('categoria');
+        $image = $request->file('image');
+        
+
+        //asiganar valores
+        $producto = new Producto();
+        $producto->nombre = $nombre;
+        $producto->precio  = $precio;
+        $producto->estado = $estado;
+        $producto->garantia = $garantia;
+        $producto->noexistencia = $noexistencia;
+        $producto->descripcion = $descripcion;
+        $producto->categoria_id = $categoria;
+        $producto->image=$image;
+
+            if($image){
+                $imagen=time().$image->getClientOriginalName();
+                Storage::disk('productos')->put($imagen, File::get($image));
+                $producto->image = $imagen;
+            }
+            return redirect()->route('misproductos');
+    }
+    
     public function show($id){
         $product=Producto::whereId($id)->first();
         $relacion=Producto::whereCategoria_id($product->categoria_id)->inRandomOrder()->take(3)->get();

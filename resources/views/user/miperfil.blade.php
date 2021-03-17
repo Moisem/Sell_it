@@ -4,7 +4,7 @@
     <div class="content-profile container-fluid">
         <div class="row content-row">
             <aside class="datos-profile col-sm-12 col-md-3">
-                <div class="img-profile col-sm-12  col-md-3 mt-5">
+                <div class="img-profile">
                 @if($user->image)
                     <img src="{{ route('user.image',['filename'=>$user->image]) }}">
                 @endif
