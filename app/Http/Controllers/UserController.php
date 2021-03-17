@@ -54,7 +54,7 @@ class UserController extends Controller
             $user->image = $imagen_name;
         }
 
-        $user->update();
+        $user->save();
         return redirect()->route('miperfil')
                             ->with(['message'=>'Perfil actulizado correctamente']);
 
