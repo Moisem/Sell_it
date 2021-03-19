@@ -7,7 +7,7 @@
                     <h2>Mis Productos</h2>
                 </div>
                 @forelse ($usuario->productos as $producto)
-                @include('includes.productos')
+                @include('includes.misproductos')
                 @empty
                 <div class="alert alert-success text-center my-5" role="alert">
                     No tienes productos en venta

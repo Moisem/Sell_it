@@ -55,7 +55,7 @@ class UserController extends Controller
         }
 
         $user->save();
-        return redirect()->route('miperfil')
+        return redirect()->route('modificarperfil')
                             ->with(['message'=>'Perfil actulizado correctamente']);
 
     }
@@ -66,8 +66,12 @@ class UserController extends Controller
 
     public function perfil($id){
         $user = User::find($id);
+        $productos = Producto::whereUser_id($user->id)
+        ->whereEstado('Disponible')
+        ->latest()->paginate();
         return view('user.miperfil',[
-            'user'=>$user
+            'user'=>$user,
+            'productos'=>$productos
         ]);
     }
 }

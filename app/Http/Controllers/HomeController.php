@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $user=Auth::user()->id;
-        $productos = Producto::latest()->paginate(3);
+        $productos = Producto::whereEstado('Disponible')->latest()->paginate();
         return view('home',[
             'productos'=>$productos
         ]);

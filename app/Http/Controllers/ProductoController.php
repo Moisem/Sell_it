@@ -21,7 +21,7 @@ class ProductoController extends Controller
     public function index()
     {
         $user=Auth::user()->id;
-        $productos = Producto::latest()->paginate();
+        $productos = Producto::whereEstado('Disponible')->latest()->paginate();
         return view('producto.index',[
             'productos'=>$productos
         ]);
@@ -29,7 +29,7 @@ class ProductoController extends Controller
     public function create(){
         $categorias=Categoria::all();
             return view('producto.create',[
-                'categoria'=>$categorias
+                'categorias'=>$categorias
             ]);
     }
     public function save(Request $request){
@@ -82,7 +82,15 @@ class ProductoController extends Controller
         $file = Storage::disk('productos')->get($filename);
         return new Response($file,200);
     }
-
+    public function edit($id)
+    {
+        $producto=Producto::findOrFail($id);
+        $categorias=Categoria::all();
+        return view('producto.edit',[
+            'producto'=>$producto,
+            'categorias'=>$categorias
+        ]);
+    }
     public function update(Producto $id, Request $request){
         $validate =$this->validate($request,[
             'nombre' => ['required', 'string', 'max:255'],
@@ -93,30 +101,40 @@ class ProductoController extends Controller
             'descripcion' => ['required'],
             'categoria' => ['required'],
     ]);
+            $producto = Producto::findOrFail($id)->first();
+            $nombre = $request->input('nombre');
+            $precio = $request->input('precio');
+            $estado = $request->input('estado');
+            $garantia = $request->input('garantia');
+            $noexistencia = $request->input('noexistencia');
+            $descripcion = $request->input('descripcion');
+            $categoria=$request->input('categoria');
+            $image = $request->file('image');
+        
+            $user=\Auth::user();
+            $producto->user_id = $user->id;
+            $producto->nombre = $nombre;
+            $producto->precio  = $precio;
+            $producto->estado = $estado;
+            $producto->garantia = $garantia;
+            $producto->noexistencia = $noexistencia;
+            $producto->descripcion = $descripcion;
+            $producto->categoria_id = $categoria;
+
             $imagen = $request->file('image');
-                if($imagen){
+            if($imagen){
                 $imagen_name= time().$imagen->getClientOriginalName();
                 Storage::disk('productos')->put($imagen_name, File::get($imagen));
-                $id->image = $imagen_name;
+                $producto->image = $imagen_name;
             }
-            $id->update([
-                'nombre'=>request('nombre'),
-                'precio'=>request('precio'),
-                'estado'=>request('estado'),
-                'garantia'=>request('garantia'),
-                'noexistencia'=>request('noexistencia'),
-                'descripcion'=>request('descripcion'),
-                'categoria'=>request('categoria'),
-                'image'=>request('image'),
-            ]);
-        
+            $producto->save();
 
             return redirect()->route('misproductos');
     }
     
     public function show($id){
         $product=Producto::whereId($id)->first();
-        $relacion=Producto::whereCategoria_id($product->categoria_id)->inRandomOrder()->take(3)->get();
+        $relacion=Producto::whereCategoria_id($product->categoria_id)->inRandomOrder()->take(4)->get();
         return view('producto.show',[
             "producto"=>$product,
             "productos"=>$relacion
@@ -127,13 +145,12 @@ class ProductoController extends Controller
         $user=User::with('productos')->findOrFail(auth()->user()->id);
         return view('user.misproductos',[
             'usuario'=>$user,
-            'categoria'=>$categorias
+            'categoria'=>$categorias,
         ]);
     }
     public function destroy(Producto $id){
         $id->delete();
         return redirect()->route('misproductos');
     }
-
 
 }

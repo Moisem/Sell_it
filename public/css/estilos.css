@@ -8,7 +8,7 @@ body{
 }
 .izquierda{
     background-color: #000;
-    height: 75vh;
+    height: 500px;
     width: 55%;
     color: #fff;
     font-family: 'Teko', sans-serif;
@@ -16,8 +16,11 @@ body{
 .derecha{
     background-size: cover;
     background-position:center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-image: url('https://i.pinimg.com/originals/cb/fa/92/cbfa924ae956f63184221fe0ceb9da83.jpg');
-    height: 75vh;
+    height: 500px;
     width: 45%;
 }
 .title{
@@ -44,89 +47,102 @@ body{
     text-align: center;
 }
 /*--------Mi perfil-----------*/
-.thead-products{
-    background-color:  #ed4c3f ;
-}
-.table-products{
-    width: 90%;
-    overflow-x: auto;
-}
-.table{
-    width:100%;
-}
-tr:only-child:hover td{
-    background-color:  #c8c6c6 ;
-}
-.img-profile img{
-    max-width: 9.5em;
-    text-align: center;
-}
-.btn-publicar{
-    margin-top: .8em;
-    background-color: #1fa7b0;
-    color: #fff;
-}
-.btn-publicar:hover{
-    background-color:  #000;
-    color: #FFF;
+.datos-profile img{
+    width: 60%;
+    border-radius: 50%;
+    box-shadow: .4px .4px 11px rgb(230, 103, 103);
 }
 aside{
     text-align: center;
     height: 100%;
+    padding: 2em 0;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 1px 1px 10px;
+}
+aside hr{
+    background-color: rgb(156, 15, 98);
+    height: 3px;
+}
+.table-products{
+    margin: auto;
 }
 /*----------------Productos------------------*/
-.products{
-    max-width: 23em;
-    min-width: 16em;
-    margin: auto;
-    margin-top: 1.25em;
-    padding: 0 ;
-    background-color:#fff;
-    box-shadow: 5px 5px 9px;
-    
-}
-.body-product{
-    text-align: center;
-    height: 7.6em;
-    padding: 0 .7em;
-}
-.ver-mas{
-    background-color:#000 ;
-    color: #FFF;
-    width: 80%;
-}
-.ver-mas:hover{
-    background-color: rgb(156, 15, 98) ;
-    color: #FFF;
-}
-.body-product h2{
-    font-size: 1.1em;
-    padding-top:5px;
-}
-.body-product p{
-    margin-bottom: 5px;
+.content-product{
+    max-height: 28em;
+    min-height: 28em;
+    box-shadow: 5px 5px 8px;
+    background-color: #ffff;
+    margin: 1.2em 0;
 }
 .img-product img{
     width: 100%;
-    min-height: 23em;
-    max-height: 23em;
+    min-height: 12em;
+    max-height: 12em;
 }
+.header-body{
+    min-height:3em;
+    max-height:3em;
+    width: 100%;
+    overflow: hidden;
+    word-wrap: break-word;
+    padding: .6rem;
+}
+.body-body{
+    height: 8.6em;
+    padding: .5em;
+}
+.body-body h6{
+    color: rgb(156, 15, 98);
+    font-weight:bold;
+    font-size: 1.2rem;
+}
+.footer-product{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+.ver-mas{
+    background-color: rgb(156, 15, 98) ;
+    color: #FFF;
+    min-width: 40%;
+    margin: 0 .5em;
+}
+.ver-mas:hover{
+    border:solid 2px rgb(156, 15, 98);
+    font-weight: bold;
+    background-color: #ffff;
+    color: rgb(156, 15, 98);
+}
+.btn-perfil{
+    border:solid 2px rgb(156, 15, 98);
+    font-weight: bold;
+    min-width: 40%;
+    margin: 0 .5em;
+    background-color: #ffff;
+    color: rgb(156, 15, 98);
+}
+.btn-perfil:hover{
+    background-color: rgb(156, 15, 98) ;
+    color: #FFF;
+}
+
 /*-------------------Membrecias-------------------*/
 .promotion{
-    max-width: 23em;
-    min-width: 16em;
-    margin:auto;
-    padding: 1.5em 0;
+    margin: 1.6em 0;
 }
 .promotion-card{
+    max-width: 90%;
+    min-width: 80%;
+    margin:auto;
     background-color:#fff;
-    min-height: 32em;
+    min-height: 28em;
     box-shadow: 1px 1px 8px;
-    margin: auto;
 }
 .title-promotion h3{
     font-size: 35px;
-    height: 3em;
+    height: 3.4em;
     margin: 0;
     display: flex;
     color:#fff;
@@ -153,20 +169,21 @@ aside{
     text-align: center;
 }
 .elegir{
-    background: linear-gradient(to right, rgb(14, 185, 86) 40%, rgb(44, 43, 43));
+    background:rgb(14, 185, 86);
     color: #fff;
     padding: .7em;
     width: 80%;
     font-size: 1.1em;
-    border-radius: 17px;
+    font-weight: bold;
 }
 .line-basico{
     background-color: rgb(59, 165, 103);
     height: 2px;
 }
 .elegir:hover{
-    background: linear-gradient(to right, rgb(0,0,0) 1%, rgb(14, 185, 86));
-    color: #fff;
+    background:#fff;
+    border: solid 3px rgb(59, 165, 103);
+    color: #000;
 }
 
 /*----------------footer--------------*/
@@ -228,6 +245,11 @@ aside{
 .show-img{
     background-color: #fff;
     width: 100%;
+    overflow: hidden;
+}
+.show-img img{
+    width: 100%;
+    height: 100%;
 }
 .show-info{
     background-color: #fff;
@@ -282,6 +304,7 @@ aside{
 .pub_producto{
     margin: 30px 0;
     box-shadow: 5px 5px 8px;
+    background-color: #ffff;
 }
 .header-producto{
     padding: 12px;
@@ -314,6 +337,7 @@ aside{
 }
 .footer-producto{
     display: flex;
+    justify-content: center;
 }
 
 /*---------------Login-----------------------*/
@@ -450,4 +474,109 @@ aside{
 }
 .title-misproductos{
     text-align: center;
+}
+/*--------------------*/
+.foto-producto{
+    max-width: 100px;
+    margin: .5em 0;
+}
+
+/*------------Actualizar productos----------------*/
+.editar-main{
+    background-color: aqua;
+    margin: auto;
+    margin-top: 1.7em;
+    padding: 0%;
+    display: flex;
+    background: #ffff;
+    box-shadow: 5px 5px 8px;
+}
+.editar-izquierda{
+    width: 50%;
+    padding: 20px 20px;
+}
+.editar-derecha{
+    width: 50%;
+    overflow: hidden;
+}
+.title-imagen{
+    text-align: center;
+    padding-top: 25px;
+    height: 10%;
+}
+.img-derecha{
+    height: 90%;
+}
+.img-derecha img{
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+.header-editar{
+    text-align: center;
+    padding: 5px 0;
+}
+.body-editar input select { 
+    border-radius: 6px;
+    border: solid 1px #afa6a5;
+    width: 100%;
+    height: 40px;
+}
+.body-editar input:focus select:focus{
+    border-radius: 6px;
+    border: solid 3px #0ed1b7;
+}
+.btn-editar{
+    color: #ffff;
+    width: 100%;
+}
+.btn-actualizar{
+    width: 100%;
+}
+.btn-actualizar:hover{
+    color: #000;
+    background-color: rgb(253, 249, 6);
+}
+/*-------------Crear Producto---------------*/
+.guardar-main{
+    background-color: aqua;
+    margin: auto;
+    margin-top: 1.7em;
+    padding: 0%;
+    display: flex;
+    background: #ffff;
+    box-shadow: 5px 5px 8px;
+}
+.guardar-izquierda{
+    width: 100%;
+    padding: 20px 20px;
+}
+.img-derecha{
+    height: 90%;
+}
+.header-guardar{
+    text-align: center;
+    padding: 5px 0;
+}
+.body-guardar input select { 
+    border-radius: 6px;
+    border: solid 1px #afa6a5;
+    width: 100%;
+    height: 40px;
+}
+.body-guardar input:focus select:focus{
+    border-radius: 6px;
+    border: solid 3px #0ed1b7;
+}
+.btn-guardar{
+    color: #ffff;
+    width: 100%;
+}
+.btn-guardar{
+    width: 100%;
+}
+.btn-guardar:hover{
+    color: #000;
+    background-color: rgb(253, 249, 6);
 }

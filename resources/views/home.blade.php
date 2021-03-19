@@ -35,23 +35,7 @@
                     <div class="title-index">
                         <h2 class="my-5">Compra mas gastando menos</h2>
                     </div>
-                    <div class="row">
-                        @foreach ($productos as $producto)
-                        <div class="col-sm-6 col-md-6 col-lg-4 products">
-                            <div class="content-product">
-                                <div class="img-product">
-                                    <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
-                                </div>
-                                <div class="body-product">
-                                    <h2>{{$producto->nombre}}</h2>
-                                    <p>Precio:$ {{$producto->precio}}</p>
-                                    <a href="{{route('producto.show', $producto)}}" class=" btn ver-mas">Ver mas</a>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-
-                    </div>
+                    @include('includes.productos')
                 </section>
                 <section class="promotion-index container-fluid">
                     <div class="title-promotion">

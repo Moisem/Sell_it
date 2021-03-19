@@ -44,7 +44,8 @@ Route::delete('MiPerfil/MisProductos/{id}', 'ProductoController@destroy')->name(
 //productos
 Route::get('/subirproducto', 'ProductoController@create')->name('producto.create');
 Route::post('/subirproducto/guardar', 'ProductoController@save')->name('producto.save');
-Route::patch('/MiPerfil/MisProductos/update/{id}', 'ProductoController@update')->name('producto.update');
+Route::get('/MiPerfil/MisProductos/{id}/editar', 'ProductoController@edit')->name('producto.edit');
+Route::patch('/MiPerfil/MisProductos/{id}', 'ProductoController@update')->name('producto.update');
 Route::get('/image/{filename}', 'ProductoController@getImage')->name('producto.image');
 Route::get('/productos', 'ProductoController@index')->name('productos');
 Route::get('/producto/{id}', 'ProductoController@show')->name('producto.show');

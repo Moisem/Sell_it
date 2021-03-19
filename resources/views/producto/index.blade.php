@@ -2,17 +2,13 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row ">
+        <div class="col-md-12">
         @include('includes.message')
-
-        @foreach($productos as $producto)
-            @include('includes.productos',['producto'=>$producto])
-        @endforeach
-        
+        </div>
+        @include('includes.productos')
         <div class="clearfix"></div>
         {{$productos->links()}}
-        </div>
     </div>
 </div>
 @endsection

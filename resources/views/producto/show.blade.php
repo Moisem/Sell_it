@@ -30,29 +30,14 @@
                 </div>
                     <p>Número: {{$producto->user->numtelefonico}}</p>
                     <P>Correo: {{$producto->user->email}}</P>
-                    <a href="#" class="btn btn-visitar-perfil">Visitar perfil</a>
+                    <a href="{{route('miperfil',['id'=> $producto->user->id])}}" class="btn btn-visitar-perfil">Visitar perfil</a>
                 </div>
             </div>
             <div class="productos-relacionados col-sm-12">
                 <div class="title-relacionados my-5">
                     <h3>Productos Relacionados</h3>
                 </div>
-                <div class="content-relacionados row">
-                    @foreach ($productos as $producto)
-                    <div class="col-sm-12 col-md-4 products">
-                        <div class="content-product">
-                            <div class="img-product">
-                                <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
-                            </div>
-                            <div class="body-product">
-                                <h2>{{$producto->nombre}}</h2>
-                                <p>Precio: ${{$producto->precio}}</p>
-                                <a href="{{route('producto.show', $producto)}}" class=" btn ver-mas">Ver mas</a>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
+                @include('includes.productos')
             </div>
         </div>
    </section>
