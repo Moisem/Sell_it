@@ -14,6 +14,11 @@
     <body>
         @extends('layouts.app')
         @section('content')
+        @if(session('message'))
+                <div class="alert alert-success">
+                    {{ session('message')}}
+                </div>
+        @endif
           <div class="content">
                 <section class="img-index">
                    <div class="izquierda">
@@ -42,48 +47,25 @@
                         <h2 class="my-5">Conoce nuetras membrecias y convierte en un socio más</h2>
                     </div>
                     <div class="row content-row content-promotion">
+                        @foreach ($membrecia as $item)
                         <div class="col-sm-4 promotion">
                             <div class="promotion-card">
                                 <div class="title-promotion">
-                                    <h3>$150</h3>
+                                    <h3>{{$item->precio}}</h3>
                                 </div>
                                 <div class="body-promotion">
-                                    <h3>Basico</h3>
+                                    <h3>{{$item->tipo}}</h3>
                                     <hr class="line-basico">
                                 </div>
                                 <div class="footer-promotion">
-                                    <button class="btn elegir">Elegir</button>
+                                    <form action="{{route('guardar', $item->id)}}" method="POST">
+                                        @csrf
+                                        <button class=" btn elegir">Comprar</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 promotion">
-                            <div class="promotion-card">
-                                <div class="title-promotion">
-                                    <h3>$150</h3>
-                                </div>
-                                <div class="body-promotion">
-                                    <h3>Basico</h3>
-                                    <hr class="line-basico">
-                                </div>
-                                <div class="footer-promotion">
-                                    <button class="btn elegir">Elegir</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 promotion">
-                            <div class="promotion-card">
-                                <div class="title-promotion">
-                                    <h3>$150</h3>
-                                </div>
-                                <div class="body-promotion">
-                                    <h3>Basico</h3>
-                                    <hr class="line-basico">
-                                </div>
-                                <div class="footer-promotion">
-                                    <button class="btn elegir">Elegir</button>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <br><br><br><br><br>
                 </section>

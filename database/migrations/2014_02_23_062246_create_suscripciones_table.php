@@ -16,7 +16,7 @@ class CreateSuscripcionesTable extends Migration
         Schema::create('suscripciones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('fechainicio');
-            $table->date('fechafin');
+            $table->date('fechafin');   
             $table->double('total');
             $table->enum('estado',['activa','vencida']);
             $table->bigInteger('membresia_id')->unsigned();

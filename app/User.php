@@ -53,6 +53,6 @@ class User extends Authenticatable
     }
     //relacion many to one = muchos a uno
     public function suscripcion(){
-        return $this->belongsTo('App\Suscripcion','suscripcion_id');
+        return $this->belongsTo(Suscripcion::class);
     }
 }

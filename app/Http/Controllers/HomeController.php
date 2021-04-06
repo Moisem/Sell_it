@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Membresia;
 use Illuminate\Http\Request;
 use App\Producto;
 use App\User;
@@ -25,10 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user=Auth::user()->id;
         $productos = Producto::whereEstado('Disponible')->latest()->paginate();
+        $membrecia=Membresia::all();
         return view('home',[
-            'productos'=>$productos
+            'productos'=>$productos,
+            'membrecia'=>$membrecia
         ]);
     }
 }

@@ -52,3 +52,8 @@ Route::get('/producto/{id}', 'ProductoController@show')->name('producto.show');
 
 //welcome
 Route::get('/', 'welcomeController@index')->name('welcome');
+
+//membresias
+Route::post('/ElegirPlan/{id}/Comprar', 'PaypalController@pagar')->name('guardar');
+Route::get('/Comprar/Estatus', 'PaypalController@paypalStatus')->name('status');
+
