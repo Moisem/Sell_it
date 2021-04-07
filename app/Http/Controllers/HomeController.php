@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Producto;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 class HomeController extends Controller
 {
     /**
@@ -26,11 +28,21 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $productos = Producto::whereEstado('Disponible')->latest()->paginate();
+        
+        $sus=DB::select("SELECT users.email, suscripciones.estado 
+            FROM users, suscripciones  WHERE suscripciones.id=users.suscripcion_id
+            AND suscripciones.estado='vencida'");
+            $num=(count($sus));
+            for ($i=0; $i < $num; $i++) {
+                $emails=$sus[$i]->estado;
+            }
         $membrecia=Membresia::all();
         return view('home',[
             'productos'=>$productos,
-            'membrecia'=>$membrecia
+            'membrecia'=>$membrecia,
+            'sus'=>$emails
         ]);
     }
 }

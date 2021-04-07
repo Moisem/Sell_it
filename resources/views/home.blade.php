@@ -37,6 +37,12 @@
                    </div>
                 </section>
                 <section class="products-index container-fluid">
+                    @if ($sus=="vencida")
+                    <h2>Los mejores productos</h2>
+                    @foreach ($productos as $item)
+                    <h3>{{$item->nombre}}</h3>
+                        @endforeach
+                    @endif
                     <div class="title-index">
                         <h2 class="my-5">Compra mas gastando menos</h2>
                     </div>
