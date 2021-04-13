@@ -42,7 +42,7 @@ class HomeController extends Controller
         return view('home',[
             'productos'=>$productos,
             'membrecia'=>$membrecia,
-            'sus'=>$emails
+            'sus'=>$sus
         ]);
     }
 }

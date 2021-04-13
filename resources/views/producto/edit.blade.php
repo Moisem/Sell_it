@@ -11,6 +11,7 @@
                 <div class="body-editar">
                     <form action="{{route('producto.update', $producto)}}" method="POST" enctype="multipart/form-data">
                         @csrf @method('PATCH')
+                        <input type="hidden" name="producto_id" value="{{$producto->id}}" />
                         <div class="nombre-editar">
                             <label for="nombre" class="">Nombre del producto</label>
                             <input id="nombre" type="text" name="nombre" class="form-control" required autocomplete="nombre" value="{{$producto->nombre}}">
