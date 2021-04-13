@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+@if(session('message'))
+<div class="alert alert-success">
+    {{ session('message')}}
+</div>
+@endif
 <section class="hero-nosotros mb-5">
 </section>
 <section class="info">
@@ -7,14 +12,11 @@
     <div class="row content-row">
         <div class="col-md-12 topmargin-lg">
             <div class="informacion">
-                <h2 class="content-center">LA EMPRESA</h2>
-                <p>The best trip es una empresa totalmente nueva, creada en el presente año
-                ubicada en el centro de la ciudad.
-                Desarrollada principalmente por nosotros, buscando satisfacer las necesidades del
-                usuario para que pueda divertirse de una manera segura con los viajes
-                experienciales o de cualquier otro tipo, donde puede adquirir varias opciones en
-                diferentes ámbitos ya sea, trasporte, hospedaje y una gran variedad de paquetes
-                que sin duda será de una gran utilidad al usuario.
+                <h2 class="content-center">SELL-IT</h2>
+                <p>Somos una empresa dedicada al comercio en linea, durante estos ultimos años detectamos que 
+                    se ha incrementado la venta o promoción de productos en linea y más ahora duarnte la pandemia que 
+                    vivimos actualmente, por lo que desarrollamos una platafa en la cual los usuarios puedan
+                    promocionar sus productos y de esa forma nace SELL-IT
                 </p>
             </div>
         </div>
@@ -23,8 +25,7 @@
             <img src="https://image.flaticon.com/icons/png/512/1310/1310587.png">
             <div class="detalles-nosotros">
                 <p>
-                Viajaras de manera segura, poniendo a tu disposicion el transporte de tu mejor elección 
-                incluido en tu pago inicial 
+                    Gana dinero promocionando tus productos o servicios con nosotros.
                 </p>
             </div>
             </div>
@@ -32,8 +33,8 @@
                     <img src="https://image.flaticon.com/icons/png/512/1370/1370310.png">
                     <div class="detalles-nosotros">
                         <p>
-                        Te daremos acceso a los mejores hoteles, para que vias tu experiencia de manera segura, 
-                        con todo incluido 
+                            Se parte del mercado local, ayudando a otros a conseguir productos
+                            a bajo consto con una buena rentabilidad.
                         </p>
                     </div>
                 </div>
@@ -41,32 +42,54 @@
                     <img src="https://image.flaticon.com/icons/png/512/1628/1628441.png">
                     <div class="detalles-nosotros">
                         <p>
-                            Nos ponemos a tu servicio para que tengas la mejor experiencia de viajar y conocer México
+                            Obten beeficios siendo parte de nuestros clientes concentidos
+                            adquiriendo nuestra membrecia.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-12 contacto content-center">
-                <form action="" method="Post" class="form-contacto">
+                <form action="{{route('comentarios')}}" method="Post" class="form-contacto" >
+                    @csrf
                         <p class="h3 text-center"> Contactanos</p>
                         <div class="form-section ">
                             <br>
-                            <input type="text" name="nombre" placeholder="Nombre">
+                            <input type="text" name="nombre" class="@error('nombre') is-invalid @enderror" placeholder="Nombre" required autocomplete="nombre">
+                            @error('nombre')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-section">
                             <br>
-                            <input type="text" name="apellidos" placeholder="Apellidos">
+                            <input type="text" name="apellidos" class="@error('apellidos') is-invalid @enderror" placeholder="Apellidos" required autocomplete="apellidos">
+                            @error('apellidos')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-section">
                             <br>
-                            <input type="text" name="correo" placeholder="Correo electrinico">
+                            <input type="email" class="@error('email') is-invalid @enderror" name="email" placeholder="Correo electrinico" required autocomplete="email">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-section">
                             <br>
-                            <textarea class="Comentarios-contacto" name="comentarios" placeholder="Comentarios"></textarea>
+                            <textarea class="Comentarios-contacto @error('comentarios') is-invalid @enderror" name="comentarios" placeholder="Comentarios" required autocomplete="comentarios"></textarea>
+                            @error('comentarios')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-section buscar">
                             <br>
-                            <input type="submit" name="" value="Enviar" class="btn btn-blanco">
+                            <button type="submit"  class="btn btn-info" style="width:100%">Enviar</button>
                         </div>
                         <br>
                     </form>

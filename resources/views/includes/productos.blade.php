@@ -1,6 +1,4 @@
-<div class="row">
-    @foreach ($productos as $producto)
-    <div class="col-sm-12 col-md-4 col-lg-3">
+<div class="col-sm-12 col-md-4 col-lg-3">
         <div class="content-product">
             <div class="img-product">
                 <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
@@ -21,5 +19,3 @@
             </div>
         </div>
     </div>
-    @endforeach
-</div>

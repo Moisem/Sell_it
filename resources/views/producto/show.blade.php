@@ -3,6 +3,7 @@
    <section class="show-content container-fluid">
        <div class="row">
             <div class="show-header">
+                <p>{{$producto->categoria->nombre}} > {{$producto->user->name}} >{{$producto->nombre}} > </p>
             </div>
             <div class="show-productos col-sm-12 col-md-8">
                 <div class="show-img">
@@ -37,7 +38,11 @@
                 <div class="title-relacionados my-5">
                     <h3>Productos Relacionados</h3>
                 </div>
-                @include('includes.productos')
+                <div class="row">
+                    @foreach ($productos as $producto)
+                        @include('includes.productos')
+                    @endforeach
+                </div>
             </div>
         </div>
    </section>

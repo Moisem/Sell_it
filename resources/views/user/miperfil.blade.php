@@ -16,9 +16,11 @@
                 </div>
             </aside>
         </div>
-        @forelse ($productos as $producto)
-            @include('includes.productos')
-        @empty
+        <div class="row">
+            @forelse ($productos as $producto)
+                @include('includes.productos')
+            @empty
+        </div>
         <div class="alert alert-success col-sm-12 col-md-6 m-auto  text-center my-5" role="alert">
             El usuario no tiene productos en venta
         </div>

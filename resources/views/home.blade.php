@@ -68,7 +68,11 @@
                         </div>
                         <h2 class="my-5">Compra mas gastando menos</h2>
                     </div>
-                    @include('includes.productos')
+                    <div class="row">
+                        @foreach ($productos as $producto)
+                            @include('includes.productos')
+                        @endforeach
+                    </div>
                 </section>
                 <section class="promotion-index container-fluid">
                     <div class="title-promotion">

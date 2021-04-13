@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Producto;
 use App\User;
 use App\Categoria;
+use App\Comentario;
+use App\Contacto;
 use Validator;
 use Hash;
 use Illuminate\Http\Request;
@@ -99,12 +101,35 @@ class UserController extends Controller
 
     public function perfil($id){
         $user = User::find($id);
-        $productos = Producto::whereUser_id($user->id)
-        ->whereEstado('Disponible')
-        ->latest()->paginate();
+        $productos = Producto::whereUser_id($id)
+        ->whereEstado('Disponible')->get();
         return view('user.miperfil',[
             'user'=>$user,
             'productos'=>$productos
         ]);
     }
+
+    public function comentarios(Request $request){
+        $nombre=$request->get('nombre');
+        $apellidos=$request->get('apellidos');
+        $email=$request->get('email');
+        $comentario=$request->get('comentarios');
+
+        $validate = $this->validate($request,[
+            'nombre' => ['required', 'string', 'min:3', 'max:255'],
+            'apellidos' => ['required', 'string', 'min:5', 'max:255'],
+            'email' => ['required', 'string','email', 'min:10', 'max:50'],
+            'comentarios' => ['required', 'string', 'min:10','max:255']
+        ]);
+
+        Contacto::create([
+            'nombre'=>$nombre,
+            'apellidos'=>$apellidos,
+            'email'=>$email,
+            'comentarios'=>$comentario
+        ]);
+
+        return redirect()->route('quiensesosmos')->with(['message'=>'¡Gracias por tus comentarios!']);
+    }
 }
+

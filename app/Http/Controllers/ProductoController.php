@@ -30,7 +30,7 @@ class ProductoController extends Controller
                 WHERE pro.estado='Disponible' AND 
                 pro.user_id=users.id AND
                 users.suscripcion_id=suscripciones.id AND 
-                suscripciones.estado='activa' LIMIT 5");
+                suscripciones.estado='activa' ORDER BY RAND() LIMIT 5");
         return view('producto.index',[
             'productos'=>$productos,
             'sus'=>$susProductos
@@ -127,12 +127,7 @@ class ProductoController extends Controller
             $categoria=$request->input('categoria');
             $image = $request->file('image');
         
-<<<<<<< HEAD
-            $user=Auth::user();
-            $producto->user_id = $user->id;
-=======
             $producto = Producto::find($producto_id);
->>>>>>> 8cab220593085fdb67a10f07676d79e1cf1d47eb
             $producto->nombre = $nombre;
             $producto->precio  = $precio;
             $producto->estado = $estado;

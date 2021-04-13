@@ -88,3 +88,5 @@ Route::get('/Comprar/Estatus', 'PaypalController@paypalStatus')->name('status');
 Route::get('/QuienesSomos', function(){
     return view('info.info');
 })->name('quiensesosmos');;
+
+Route::post('/guardando', 'UserController@comentarios')->name('comentarios');

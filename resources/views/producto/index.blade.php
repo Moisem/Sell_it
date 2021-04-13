@@ -7,7 +7,11 @@
         <div class="col-md-12">
         @include('includes.message')
         </div>
-        @include('includes.productos')
+        <div class="row">
+            @foreach ($productos as $producto)
+                @include('includes.productos')
+            @endforeach
+        </div>
         <div class="clearfix"></div>
         {{$productos->links()}}
     </div>
