@@ -41,6 +41,8 @@ Route::get('/MiPerfil/MisProductos', 'ProductoController@misproductos')->name('m
 Route::get('/MiPerfil/image/{filename}', 'UserController@getImage')->name('user.image');
 Route::get('/MiPerfil/{id}', 'UserController@perfil')->name('miperfil');
 Route::delete('MiPerfil/MisProductos/{id}', 'ProductoController@destroy')->name('user.delete');
+//password
+Route::post('user/updatepassword', 'UserController@updatePassword');
 //productos
 Route::get('/subirproducto', 'ProductoController@create')->name('producto.create');
 Route::post('/subirproducto/guardar', 'ProductoController@save')->name('producto.save');
@@ -49,6 +51,32 @@ Route::patch('/MiPerfil/MisProductos/{id}', 'ProductoController@update')->name('
 Route::get('/image/{filename}', 'ProductoController@getImage')->name('producto.image');
 Route::get('/productos', 'ProductoController@index')->name('productos');
 Route::get('/producto/{id}', 'ProductoController@show')->name('producto.show');
+
+//admin
+Route::get('/admin', 'AdminController@index')->name('admin');
+
+
+//admin-usuarios
+Route::get('/admin/users', 'AdminController@users')->name('admin.users');
+//admin-reportes
+    //usuarios
+    Route::get('/admin/userProductos/pdf/{id}', 'PDFController@PDFUserproductos')->name('PDF.Userproductos');
+
+
+//admin-categorias
+Route::get('/admin/categorias', 'AdminController@categorias')->name('admin.categorias');
+Route::get('/admin/categorias/create', 'CategoriaController@formcreate')->name('categorias.add');
+Route::post('/admin/categorias/create/guardar', 'CategoriaController@save')->name('categoria.save');
+Route::delete('/admin/categorias/{id}', 'CategoriaController@destroy')->name('categoria.delete');
+Route::get('/admin/categorias/edit/{id}', 'CategoriaController@edit')->name('categoria.edit');
+Route::patch('/admin/categorias/update', 'CategoriaController@update')->name('categoria.update');
+//admin-reportes
+    //categorias
+    Route::get('/admin/categorias/pdf', 'PDFController@PDFCategorias')->name('PDF.categorias');
+
+
+//admin-productos
+Route::get('/admin/productos', 'AdminController@productos')->name('admin.productos');
 
 //welcome
 Route::get('/', 'welcomeController@index')->name('welcome');
