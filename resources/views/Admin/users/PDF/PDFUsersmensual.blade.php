@@ -15,8 +15,8 @@
 }
 body {
     margin-top: 3cm;
-                margin-left: 2cm;
-                margin-right: 2cm;
+                margin-left: 1cm;
+                margin-right: 1cm;
                 margin-bottom: 2cm;
 }
 header {
@@ -51,25 +51,38 @@ header {
 </style>
 <body>
     <header>
-        <p>PDF Categorias </p>
+        <p>PDF Usuarios </p>
     </header>
     <footer>Sell It-DLM Developers</footer>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($categorias as $categoria)
-                    <tr>
-                        <td>{{$categoria->id}}</th>
-                        <td>{{$categoria->nombre}}</th>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <h3>Reporte usuarios nuevos en el ultimo mes </h3>
+        <p>Usuarios que se unieron este mes: {{$contar}}</p>
+    <table class="table table-striped">
+    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Apellido Materno</th>
+                            <th scope="col">Numero Telefonico</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                        <tr>
+                            <td>{{$user->id}}</th>
+                            <td>foto</th>
+                            <td>{{$user->name}}</th>
+                            <td>{{$user->apellidopaterno}}</th>
+                            <td>{{$user->apellidomaterno}}</th>
+                            <td>{{$user->numtelefonico}}</th>
+                            <td>{{$user->email}}</th>
+                            
+                        </tr>
+                        @endforeach
+                    </tbody>
+        </table>
    
 </body>
 </html>

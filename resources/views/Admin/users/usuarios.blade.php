@@ -11,11 +11,10 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Productos</h1>
+                            <h1 class="m-0">Usuarios</h1>
                             
                         </div><!-- /.col -->
                     </div><!-- /.row -->
-                   <a href=""> <button type="button" class="btn btn-success">Añadir</button></a>
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
@@ -33,7 +32,6 @@
                             <th scope="col">Numero Telefonico</th>
                             <th scope="col">Email</th>
                             <th scope="col">Editar</th>
-                            <th scope="col">Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,9 +47,7 @@
                             <td>{{$user->email}}</th>
                             
                             <td><a href=""><button type="button" class="btn btn-primary">Editar</button></a></td>
-                            <td><form action="" method="POST">
-                                        <button type="submit" class="btn btn-danger mx-2">Eliminar</button>
-                                </form></td>
+                            
                         </tr>
                         @endforeach
                     </tbody>

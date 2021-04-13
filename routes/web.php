@@ -61,7 +61,7 @@ Route::get('/admin/users', 'AdminController@users')->name('admin.users');
 //admin-reportes
     //usuarios
     Route::get('/admin/userProductos/pdf/{id}', 'PDFController@PDFUserproductos')->name('PDF.Userproductos');
-
+    Route::get('/admin/usersMensual/pdf', 'PDFController@PDFUsersmensual')->name('PDF.mensualusers');
 
 //admin-categorias
 Route::get('/admin/categorias', 'AdminController@categorias')->name('admin.categorias');
@@ -77,6 +77,14 @@ Route::patch('/admin/categorias/update', 'CategoriaController@update')->name('ca
 
 //admin-productos
 Route::get('/admin/productos', 'AdminController@productos')->name('admin.productos');
+Route::delete('admin/productos/{id}', 'ProductoController@destroyadmin')->name('admin.deleteadmin');
+Route::get('admin/productos/{id}/editar', 'ProductoController@editadmin')->name('producto.editadmin');
+Route::patch('admin/productos/{id}', 'ProductoController@updateadmin')->name('producto.updateadmin');
+//admin-reportes
+    //productos
+    Route::get('/admin/productosMensual/pdf', 'PDFController@PDFProductosmensual')->name('PDF.mensualproductos');
+    Route::get('/admin/productosDisponibles', 'PDFController@PDFproductosdisponibles')->name('PDF.productosdisponibles');
+    Route::get('/admin/productosvendidos', 'PDFController@PDFproductosvendidos')->name('PDF.productosvendidos');
 
 //welcome
 Route::get('/', 'welcomeController@index')->name('welcome');

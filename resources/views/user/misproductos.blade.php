@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="content-misproductos container-fluid">
+    @include('includes.message')
         <div class="row">
+        
             <div class="col-sm-12 col-md-6 main-productos">
                 <div class="title-misproductos">
                     <h2>Mis Productos</h2>
