@@ -43,11 +43,7 @@ class HomeController extends Controller
         return view('home',[
             'productos'=>$productos,
             'membrecia'=>$membrecia,
-<<<<<<< HEAD
             'sus'=>$susProductos
-=======
-            'sus'=>$sus
->>>>>>> 8cab220593085fdb67a10f07676d79e1cf1d47eb
         ]);
     }
 }

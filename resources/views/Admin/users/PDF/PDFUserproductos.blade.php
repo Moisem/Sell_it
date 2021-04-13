@@ -51,7 +51,6 @@
         <p>PDF Reporte Individual </p>
     </header>
     <footer>Sell It-DLM Developers</footer>
-    <div class="container">
         <h2>Reporte Individual del Usuario: </h2>
         <hr>
         <p>Nombre: {{$user->name}} {{$user->apellidopaterno}}</p>
@@ -86,7 +85,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
 </body>
 
 </html>

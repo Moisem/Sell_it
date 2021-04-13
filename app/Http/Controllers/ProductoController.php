@@ -11,7 +11,6 @@ use App\Producto;
 use App\Categoria;
 use App\User;
 use Illuminate\Support\Facades\DB;
-use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ProductoController extends Controller
 {
@@ -127,12 +126,7 @@ class ProductoController extends Controller
             $categoria=$request->input('categoria');
             $image = $request->file('image');
         
-<<<<<<< HEAD
-            $user=Auth::user();
-            $producto->user_id = $user->id;
-=======
             $producto = Producto::find($producto_id);
->>>>>>> 8cab220593085fdb67a10f07676d79e1cf1d47eb
             $producto->nombre = $nombre;
             $producto->precio  = $precio;
             $producto->estado = $estado;
@@ -149,7 +143,7 @@ class ProductoController extends Controller
             }
             $producto->update();
 
-            return redirect()->route('misproductos');
+            return redirect()->route('misproductos')->with(['message'=>'Se actualizo correctamente']);
     }
     
     public function show($id){
@@ -170,7 +164,64 @@ class ProductoController extends Controller
     }
     public function destroy(Producto $id){
         $id->delete();
-        return redirect()->route('misproductos');
+        return redirect()->route('misproductos')->with(['message'=>'Se elimino correctamente']);
     }
+
+    //area de admin
+    public function destroyadmin(Producto $id){
+        $id->delete();
+        return redirect()->route('admin.productos')->with(['message'=>'Se elimino correctamente']);
+    }
+    public function editadmin(Request $request, $id)
+    {
+        $request->user()->authorizeRole('admin');
+        $producto=Producto::find($id);
+        $categorias=Categoria::all();
+			return view('admin.productos.edit',[
+                'producto'=>$producto,
+                'categorias'=>$categorias
+            ]);
+        
+    }
+    public function updateadmin(Request $request){
+        $validate =$this->validate($request,[
+            'nombre' => ['required', 'string', 'max:255'],
+            'precio' => ['required'],
+            'estado' => ['required'],
+            'garantia' => ['required'],
+            'noexistencia' => ['required'],
+            'descripcion' => ['required'],
+            'categoria' => ['required'],
+    ]);
+            $producto_id = $request->input('producto_id');
+            $nombre = $request->input('nombre');
+            $precio = $request->input('precio');
+            $estado = $request->input('estado');
+            $garantia = $request->input('garantia');
+            $noexistencia = $request->input('noexistencia');
+            $descripcion = $request->input('descripcion');
+            $categoria=$request->input('categoria');
+            $image = $request->file('image');
+        
+            $producto = Producto::find($producto_id);
+            $producto->nombre = $nombre;
+            $producto->precio  = $precio;
+            $producto->estado = $estado;
+            $producto->garantia = $garantia;
+            $producto->noexistencia = $noexistencia;
+            $producto->descripcion = $descripcion;
+            $producto->categoria_id = $categoria;
+
+            $imagen = $request->file('image');
+            if($imagen){
+                $imagen_name= time().$imagen->getClientOriginalName();
+                Storage::disk('productos')->put($imagen_name, File::get($imagen));
+                $producto->image = $imagen_name;
+            }
+            $producto->update();
+
+            return redirect()->route('admin.productos')->with(['message'=>'Se actualizo correctamente']);
+    }
+    
 
 }

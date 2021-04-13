@@ -15,8 +15,8 @@
 }
 body {
     margin-top: 3cm;
-                margin-left: 2cm;
-                margin-right: 2cm;
+                margin-left: 1cm;
+                margin-right: 1cm;
                 margin-bottom: 2cm;
 }
 header {
@@ -51,25 +51,39 @@ header {
 </style>
 <body>
     <header>
-        <p>PDF Categorias </p>
+        <p>PDF Productos </p>
     </header>
     <footer>Sell It-DLM Developers</footer>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($categorias as $categoria)
-                    <tr>
-                        <td>{{$categoria->id}}</th>
-                        <td>{{$categoria->nombre}}</th>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <h3>Reporte productos disponibles </h3>
+        <p>Productos en total: {{$contar}}</p>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Garantia</th>
+                    <th scope="col">Cantidad Disponible</th>
+                    <th scope="col">Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($productos as $producto)
+                <tr>
+                    <td>{{$producto->id}}</th>
+                    <td>{{$producto->nombre}}</th>
+                    <td>Foto</th>
+                    <td>{{$producto->precio}}</th>
+                    <td>{{$producto->estado}}</th>
+                    <td>{{$producto->garantia}}</th>
+                    <td>{{$producto->noexistencia}}</th>
+                    <td>{{$producto->descripcion}}</th>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
    
 </body>
 </html>
