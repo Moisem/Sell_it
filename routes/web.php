@@ -41,6 +41,8 @@ Route::get('/MiPerfil/MisProductos', 'ProductoController@misproductos')->name('m
 Route::get('/MiPerfil/image/{filename}', 'UserController@getImage')->name('user.image');
 Route::get('/MiPerfil/{id}', 'UserController@perfil')->name('miperfil');
 Route::delete('MiPerfil/MisProductos/{id}', 'ProductoController@destroy')->name('user.delete');
+//password
+Route::post('user/updatepassword', 'UserController@updatePassword');
 //productos
 Route::get('/subirproducto', 'ProductoController@create')->name('producto.create');
 Route::post('/subirproducto/guardar', 'ProductoController@save')->name('producto.save');
