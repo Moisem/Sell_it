@@ -57,3 +57,6 @@ Route::get('/', 'welcomeController@index')->name('welcome');
 Route::post('/ElegirPlan/{id}/Comprar', 'PaypalController@pagar')->name('guardar');
 Route::get('/Comprar/Estatus', 'PaypalController@paypalStatus')->name('status');
 
+Route::get('/QuienesSomos', function(){
+    return view('info.info');
+})->name('quiensesosmos');;

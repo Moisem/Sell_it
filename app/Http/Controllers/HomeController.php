@@ -29,20 +29,21 @@ class HomeController extends Controller
     public function index()
     {
 
-        $productos = Producto::whereEstado('Disponible')->latest()->paginate();
-        
-        $sus=DB::select("SELECT users.email, suscripciones.estado 
-            FROM users, suscripciones  WHERE suscripciones.id=users.suscripcion_id
-            AND suscripciones.estado='vencida'");
-            $num=(count($sus));
-            for ($i=0; $i < $num; $i++) {
-                $emails=$sus[$i]->estado;
-            }
+        $productos = Producto::whereEstado('Disponible')->inRandomOrder()->take(4)->get();
+        $susProductos=DB::select("SELECT pro.id, pro.nombre, pro.precio, pro.estado, pro.garantia,
+        pro.noexistencia, pro.descripcion, pro.image, pro.user_id, pro.categoria_id,
+        pro.created_at, pro.updated_at FROM productos AS pro,
+                users, suscripciones 
+                WHERE pro.estado='Disponible' AND 
+                pro.user_id=users.id AND
+                users.suscripcion_id=suscripciones.id AND 
+                suscripciones.estado='activa' LIMIT 6");
+
         $membrecia=Membresia::all();
         return view('home',[
             'productos'=>$productos,
             'membrecia'=>$membrecia,
-            'sus'=>$emails
+            'sus'=>$susProductos
         ]);
     }
 }

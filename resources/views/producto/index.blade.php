@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('includes.sliderProductos')
 <div class="container">
     <div class="row ">
         <div class="col-md-12">

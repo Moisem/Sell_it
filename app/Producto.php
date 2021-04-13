@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Categoria;
+use App\User;
 class Producto extends Model
 {
     protected $table = 'productos';
@@ -16,7 +17,7 @@ class Producto extends Model
     }
     //relacion many to one = muchos a uno
     public function user(){
-        return $this->belongsTo('App\User','user_id');
+        return $this->belongsTo(User::class);
     }
     public function categoria(){
         return $this->belongsTo(Categoria::class);

@@ -37,13 +37,35 @@
                    </div>
                 </section>
                 <section class="products-index container-fluid">
-                    @if ($sus=="vencida")
-                    <h2>Los mejores productos</h2>
-                    @foreach ($productos as $item)
-                    <h3>{{$item->nombre}}</h3>
-                        @endforeach
-                    @endif
                     <div class="title-index">
+                        <h2 class="my-5">Recomendados para ti</h2>
+                        <div class="row">
+                            @if($sus)
+                            @foreach ($sus as $product)
+                            <div class="col-sm-12 col-md-4 col-lg-3">
+                                <div class="content-product">
+                                    <div class="img-product">
+                                        <img src="{{route('producto.image',['filename'=>$product->image])}}" alt="">
+                                    </div>
+                                    <div class="body-product">
+                                        <div class="header-body">
+                                            <h5>{{$product->nombre}}</h5>
+                                        </div>
+                                        <div class="body-body">
+                                            <h6>${{$product->precio}}</h6>
+                                            <p>Estado: {{$product->estado}}</p>
+                                            <p>Tipo de Garantia: {{$product->garantia}}</p>
+                                        </div>
+                                        <div class="footer-product">
+                                            <a class="btn ver-mas"href="{{route('producto.show', $product->id)}}">Ver más</a>
+                                            <a href="{{route('miperfil',['id'=> $product->user_id])}}" class="btn btn-perfil">Ver Perfil</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+                        </div>
                         <h2 class="my-5">Compra mas gastando menos</h2>
                     </div>
                     @include('includes.productos')

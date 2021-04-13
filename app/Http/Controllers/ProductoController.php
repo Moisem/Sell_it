@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use App\Producto;
 use App\Categoria;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class ProductoController extends Controller
@@ -22,8 +23,17 @@ class ProductoController extends Controller
     {
         $user=Auth::user()->id;
         $productos = Producto::whereEstado('Disponible')->latest()->paginate();
+        $susProductos=DB::select("SELECT pro.id, pro.nombre, pro.precio, pro.estado, pro.garantia,
+        pro.noexistencia, pro.descripcion, pro.image, pro.user_id, pro.categoria_id,
+        pro.created_at, pro.updated_at FROM productos AS pro,
+                users, suscripciones 
+                WHERE pro.estado='Disponible' AND 
+                pro.user_id=users.id AND
+                users.suscripcion_id=suscripciones.id AND 
+                suscripciones.estado='activa' LIMIT 5");
         return view('producto.index',[
-            'productos'=>$productos
+            'productos'=>$productos,
+            'sus'=>$susProductos
         ]);
     }
     public function create(){
@@ -56,7 +66,7 @@ class ProductoController extends Controller
         
 
         //asiganar valores
-        $user = \Auth::user();
+        $user = Auth::user();
         $producto = new Producto();
         $producto->user_id = $user->id;
         $producto->nombre = $nombre;
@@ -111,7 +121,7 @@ class ProductoController extends Controller
             $categoria=$request->input('categoria');
             $image = $request->file('image');
         
-            $user=\Auth::user();
+            $user=Auth::user();
             $producto->user_id = $user->id;
             $producto->nombre = $nombre;
             $producto->precio  = $precio;
