@@ -24,6 +24,7 @@
                         <div class="nombre-guardar">
                             <label for="nombre" class="">Nombre de la categoria</label>
                             <input id="nombre" type="text" name="nombre" class="form-control" required autocomplete="nombre">
+                            <span id="error7"></span>
                             @error('nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -31,7 +32,7 @@
                             @enderror
                         </div>
                         <div class="btn-guardar mt-4">
-                            <button type="submit" class="btn btn-warning btn-guardar">
+                            <button type="submit" id="btnEnviar" class="btn btn-warning btn-guardar">
                                 {{ __('Guardar') }}
                             </button>
                         </div>
@@ -43,4 +44,27 @@
         <!-- /.content-wrapper -->
     </div>
     </div>
+    <script>
+    $(document).ready(function() {
+    $('#nombre').keydown(function() {
+    var max = 15;
+      var len = $(this).val().length;
+      if (len >= max) {
+          $('span#error7').text('Has llegado al límite').css({
+        "color": "red",
+    });// Aquí enviamos el mensaje a mostrar          
+          $('span#error7').addClass('text-danger');
+          $('#btnEnviar').addClass('disabled');    
+          document.getElementById('btnEnviar').disabled = true;                    
+      } 
+      else {
+          var ch = max - len;
+          $('span#error7').text(ch + ' carácteres restantes');
+          $('span#error7').removeClass('text-danger');           
+          $('#btnEnviar').removeClass('disabled');
+          document.getElementById('btnEnviar').disabled = false;            
+      }
+});
+});
+    </script>
 @endsection

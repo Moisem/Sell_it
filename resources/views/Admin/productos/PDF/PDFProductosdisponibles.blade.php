@@ -61,7 +61,6 @@ header {
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Imagen</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Garantia</th>
@@ -74,7 +73,6 @@ header {
                 <tr>
                     <td>{{$producto->id}}</th>
                     <td>{{$producto->nombre}}</th>
-                    <td>Foto</th>
                     <td>{{$producto->precio}}</th>
                     <td>{{$producto->estado}}</th>
                     <td>{{$producto->garantia}}</th>

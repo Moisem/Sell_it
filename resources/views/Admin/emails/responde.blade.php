@@ -25,7 +25,8 @@
                         <input type="hidden" name="email" value="{{$email->email}}" />
                         <div class="form-section">
                             <br>
-                            <textarea class="form-control @error('comentarios') is-invalid @enderror" name="comentarios" placeholder="Comentarios" required autocomplete="comentarios"></textarea>
+                            <textarea id="comentarios" class="form-control @error('comentarios') is-invalid @enderror" name="comentarios" placeholder="Comentarios" required autocomplete="comentarios"></textarea>
+                            <span id="error7"></span>
                             @error('comentarios')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -34,7 +35,7 @@
                         </div>
                         <div class="form-section buscar">
                             <br>
-                            <button type="submit"  class="btn btn-info" style="width:100%">Enviar</button>
+                            <button type="submit" id="btnEnviar" class="btn btn-info" style="width:100%">Enviar</button>
                         </div>
                         <br>
                     </form>
@@ -44,4 +45,28 @@
         <!-- /.content-wrapper -->
     </div>
     </div>
+    <script>
+    
+    $(document).ready(function() {
+    $('#comentarios').keydown(function() {
+    var max = 100;
+      var len = $(this).val().length;
+      if (len >= max) {
+          $('span#error7').text('Has llegado al límite').css({
+        "color": "red",
+    });// Aquí enviamos el mensaje a mostrar          
+          $('span#error7').addClass('text-danger');
+          $('#btnEnviar').addClass('disabled');    
+          document.getElementById('btnEnviar').disabled = true;                    
+      } 
+      else {
+          var ch = max - len;
+          $('span#error7').text(ch + ' carácteres restantes');
+          $('span#error7').removeClass('text-danger');           
+          $('#btnEnviar').removeClass('disabled');
+          document.getElementById('btnEnviar').disabled = false;            
+      }
+});
+});
+    </script>
 @endsection

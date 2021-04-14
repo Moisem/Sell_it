@@ -40,7 +40,7 @@
                         <tr>
                             <td>{{$producto->id}}</th>
                             <td>{{$producto->nombre}}</th>
-                            <td>Foto</th>
+                            <td><img src="{{route('producto.image',['filename'=>$producto->image])}}" class="img-profile"></td>
                             <td>{{$producto->precio}}</th>
                             <td>{{$producto->estado}}</th>
                             <td>{{$producto->garantia}}</th>

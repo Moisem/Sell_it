@@ -60,7 +60,6 @@ header {
     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Imagen</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido Paterno</th>
                             <th scope="col">Apellido Materno</th>
@@ -72,7 +71,6 @@ header {
                         @foreach ($users as $user)
                         <tr>
                             <td>{{$user->id}}</th>
-                            <td>foto</th>
                             <td>{{$user->name}}</th>
                             <td>{{$user->apellidopaterno}}</th>
                             <td>{{$user->apellidomaterno}}</th>

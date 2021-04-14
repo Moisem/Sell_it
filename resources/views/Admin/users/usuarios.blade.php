@@ -31,10 +31,6 @@
                             <th scope="col">Apellido Materno</th>
                             <th scope="col">Numero Telefonico</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Editar</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Admin</th>
-                            <th scope="col">User</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,22 +38,14 @@
                         <tr>
                             <td>{{$user->id}}
                                 </th>
-                            <td>foto</th>
+                            <td>@if($user->image)
+                <img src="{{ route('user.image',['filename'=>$user->image]) }}" class="img-profile">
+            @endif</th>
                             <td><a href="{{route('PDF.Userproductos',['id'=> $user->id])}}">{{$user->name}}</a></th>
                             <td>{{$user->apellidopaterno}}</th>
                             <td>{{$user->apellidomaterno}}</th>
                             <td>{{$user->numtelefonico}}</th>
                             <td>{{$user->email}}</th>
-                            <td><a href=""><button type="button" class="btn btn-primary">Editar</button></a></td>
-                            @foreach ($user->roles as $role)
-                            @if($role->user_id == $user->id  )
-                            <td>{{$role->nombre}}</th>
-                            
-                            @endif 
-                            
-                                @endforeach
-                                <td><a href=""><button type="button" class="btn btn-primary">Ser Admin</button></a></td>
-                                <td><a href=""><button type="button" class="btn btn-danger">Ser User</button></a></td>
                         </tr>
                         @endforeach
                     </tbody>

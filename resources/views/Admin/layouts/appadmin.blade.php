@@ -25,6 +25,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilos.css')}}" rel="stylesheet"">
+    <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.js')}}"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/estilos.css')}}" rel="stylesheet"">
 </head>
 <body>
     <div id="app">

@@ -11,6 +11,7 @@ use App\Producto;
 use App\Categoria;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Validator;
 
 class ProductoController extends Controller
 {
@@ -43,7 +44,7 @@ class ProductoController extends Controller
     }
     public function save(Request $request){
         //validaciones
-        $validate =$this->validate($request,[
+        $validate =$request->validate([
                 'nombre' => ['required', 'string', 'max:255'],
                 'precio' => ['required'],
                 'estado' => ['required'],
@@ -51,6 +52,7 @@ class ProductoController extends Controller
                 'noexistencia' => ['required'],
                 'descripcion' => ['required'],
                 'categoria' => ['required'],
+                'image' => ['required'|'image'|'mimes:jpeg,png,jpg,gif,svg']
         ]);
 
         //recoger datos
