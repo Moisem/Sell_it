@@ -15,9 +15,12 @@
         @extends('layouts.app')
         @section('content')
         @if(session('message'))
-                <div class="alert alert-success">
-                    {{ session('message')}}
-                </div>
+        <div class="alert alert-success">
+            {{ session('message')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         @endif
           <div class="content">
                 <section class="img-index">
@@ -38,9 +41,9 @@
                 </section>
                 <section class="products-index container-fluid">
                     <div class="title-index">
+                        @if($sus)
                         <h2 class="my-5">Recomendados para ti</h2>
                         <div class="row">
-                            @if($sus)
                             @foreach ($sus as $product)
                             <div class="col-sm-12 col-md-4 col-lg-3">
                                 <div class="content-product">
@@ -64,8 +67,8 @@
                                 </div>
                             </div>
                             @endforeach
-                            @endif
                         </div>
+                        @endif
                         <h2 class="my-5">Compra mas gastando menos</h2>
                     </div>
                     <div class="row">

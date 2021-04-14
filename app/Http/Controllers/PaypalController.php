@@ -26,6 +26,7 @@ class PaypalController extends Controller
     
     public function __construct()
     {
+        $this->middleware('auth');
         $payPalConfig= Config::get('paypal');
 
 
@@ -39,6 +40,7 @@ class PaypalController extends Controller
   
     public function pagar($membresia){
         $user=Auth::user();
+        $precio=Membresia::first()->precio;
         $sus=User::with('suscripcion')->findOrFail(Auth()->user()->id);
         if ($user->suscripcion_id==0) {
             //usuario que va a pagar
@@ -47,8 +49,8 @@ class PaypalController extends Controller
 
             //Se considera el monto
             $amount = new Amount();
-            $amount->setTotal('50.00');
-            $amount->setCurrency('USD');
+            $amount->setTotal($precio);
+            $amount->setCurrency('MXN');
 
             //se agrega el monto a la transaccion
             $transaction = new Transaction();

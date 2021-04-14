@@ -625,3 +625,21 @@ aside hr{
     height: 80vh;
 }
 
+/*-----------------EdiatrPerfil-------*/
+.mi-perfil{
+    margin-top: 1.5em;
+}
+.mi-perfil-head{
+    text-align: center;
+    background-color: #fff;
+    padding:1.3em 0 ;
+}
+.hr-perfil{
+    width: 80%;
+    margin: auto;
+    border: solid 2px rgb(156, 15, 98);
+    margin-top: .5em;
+}
+.buttons-perfil {
+    margin: auto;
+}

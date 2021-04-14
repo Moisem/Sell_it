@@ -89,12 +89,19 @@ Route::patch('admin/productos/{id}', 'ProductoController@updateadmin')->name('pr
 //welcome
 Route::get('/', 'welcomeController@index')->name('welcome');
 
+
 //membresias
 Route::post('/ElegirPlan/{id}/Comprar', 'PaypalController@pagar')->name('guardar');
 Route::get('/Comprar/Estatus', 'PaypalController@paypalStatus')->name('status');
 
 Route::get('/QuienesSomos', function(){
     return view('info.info');
-})->name('quiensesosmos');;
+})->name('quiensomos');;
 
-Route::post('/guardando', 'UserController@comentarios')->name('comentarios');
+Route::post('/recibiendo', 'UserController@comentarios')->name('comentarios');
+
+Route::get('/Nosotros', function(){
+    return view('info');
+})->name('aboutWelcome');
+
+Route::post('/guardando', 'welcomeController@comentarios')->name('comentariosWelcome');

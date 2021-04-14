@@ -3,7 +3,7 @@
    <section class="show-content container-fluid">
        <div class="row">
             <div class="show-header">
-                <p>{{$producto->categoria->nombre}} > {{$producto->user->name}} >{{$producto->nombre}} > </p>
+                
             </div>
             <div class="show-productos col-sm-12 col-md-8">
                 <div class="show-img">

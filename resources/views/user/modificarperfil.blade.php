@@ -8,12 +8,19 @@
             @if(session('message'))
             <div class="alert alert-success">
                 {{ session('message')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             @endif
-            <div class="card">
-                <div class="card-header">{{ __('Mi Perfil') }}</div>
-                <a href="{{route('miperfil',['id'=> Auth::user()->id])}}" class="btn btn-publicar">Ver como Visistante</a>
-                <a href="{{route('admin')}}" class="btn btn-publicar">admin</a>
+            <div class="card mi-perfil">
+                <div class="mi-perfil-head">{{ __('Mi Perfil') }} <hr class="hr-perfil"></div>
+                <div class="buttons-perfil">
+                    <a href="{{route('miperfil',['id'=> Auth::user()->id])}}" class="btn btn-dark">Ver como Visistante</a>
+                    @if ($rol)
+                        <a href="{{route('admin')}}" class="btn btn-success">Admin</a>
+                    @endif
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('user.update')}}" enctype="multipart/form-data">
                         @csrf
@@ -104,49 +111,55 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-registrar">
                                     Guardar Cambios
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="card">
-                    <div class="card-header">{{ __('Cambiar Contraseña') }}</div>
-                    <div class="card-body">
-                        <form method="POST" action="{{url('user/updatepassword')}}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group row">
-                                <label for="mypassword" class="col-md-4 col-form-label text-md-right">Introduce tu actual password:</label>
-                                <div class="col-md-6">
-                                    <input type="password" name="mypassword" class="form-control">
-                                    <span class="text-danger">{{$errors->first('mypassword')}}</span>
+                <!---->
+                    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      Mas opciones
+                    </button>
+                  <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <div class="card-header mi-perfil-head">{{ __('Cambiar Contraseña') }}</div>
+                        <div class="card-body">
+                            <form method="POST" action="{{url('user/updatepassword')}}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group row">
+                                    <label for="mypassword" class="col-md-4 col-form-label text-md-right">Introduce tu actual password:</label>
+                                    <div class="col-md-6">
+                                        <input type="password" name="mypassword" class="form-control">
+                                        <span class="text-danger">{{$errors->first('mypassword')}}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Nuevo password:</label>
-                                <div class="col-md-6">
-                                    <input type="password" name="password" class="form-control">
-                                    <span class="text-danger">{{$errors->first('password')}}</span>
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Nuevo password:</label>
+                                    <div class="col-md-6">
+                                        <input type="password" name="password" class="form-control">
+                                        <span class="text-danger">{{$errors->first('password')}}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="mypassword" class="col-md-4 col-form-label text-md-right">Confirma tu nuevo password:</label>
-                                <div class="col-md-6">
-                                    <input type="password" name="password_confirmation" class="form-control">
+                                <div class="form-group row">
+                                    <label for="mypassword" class="col-md-4 col-form-label text-md-right">Confirma tu nuevo password:</label>
+                                    <div class="col-md-6">
+                                        <input type="password" name="password_confirmation" class="form-control">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Cambiar Contraseña
-                                    </button>
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-registrar">
+                                            Cambiar Contraseña
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-
-                </div>
+                  </div>
+                <!---->
             </div>
         </div>
     </div>
