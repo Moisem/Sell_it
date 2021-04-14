@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 contacto content-center">
-                <form action="{{route('comentariosWelcome')}}" method="Post" class="form-contacto" >
+                <form action="{{route('contactanos')}}" method="Post" class="form-contacto" >
                     @csrf
                         <p class="h3 text-center"> Contactanos</p>
                         <div class="form-section ">

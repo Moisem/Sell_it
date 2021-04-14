@@ -31,7 +31,7 @@ class ContactanosController extends Controller
         $correo = new ContactanosMailable($request->all());
         Mail::to('sellitdml@gmail.com')->send($correo);
 
-        return redirect()->route('quiensesosmos')->with(['message'=>'¡Gracias por tus comentarios!']);
+        return redirect()->route('quiensomos')->with(['message'=>'¡Gracias por tus comentarios!']);
     }
     public function email(Request $request){
         $request->user()->authorizeRole('admin');
