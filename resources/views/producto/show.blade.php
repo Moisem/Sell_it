@@ -16,11 +16,8 @@
                     <h3>Precio: ${{$producto->precio}}</h3>
                     <p>Descripción: {{$producto->descripcion}}</p>
                     <p>Estado: {{$producto->estado}}</p>
-                    <p>Disponibilidad: {{$producto->existencia}}</p>
+                    <p>Disponibilidad: {{$producto->noexistencia}}</p>
                     <p>Garantia: {{$producto->garantia}}</p>
-                    <div class="show-footer">
-                        <a href="#" class="btn btn-producto">Contactar al vendedor</a>
-                    </div>
                 </div>
                 <div class="show-vendedor">
                 <div class="name-vendedor">
