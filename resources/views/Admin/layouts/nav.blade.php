@@ -18,10 +18,13 @@
                         <a class="nav-link" href="{{route('admin.productos')}}">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/admin/categorias') }}">Categorias</a>
+                        <a class="nav-link" href="{{route('admin.categorias')}}">Categorias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Suscripciones</a>
+                        <a class="nav-link" href="{{route('admin')}}">Reportes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('emails')}}">Comentarios</a>
                     </li>
                     
                     <li class="nav-item dropdown">

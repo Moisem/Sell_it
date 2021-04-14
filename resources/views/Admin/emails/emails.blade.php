@@ -11,37 +11,39 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Categorias</h1>
+                            <h1 class="m-0">Comentarios</h1>
                             
                         </div><!-- /.col -->
                     </div><!-- /.row -->
-                   <a href="{{route('categorias.add')}}"> <button type="button" class="btn btn-success">Añadir</button></a>
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
             <!-- Main content -->
             <div class="content">
-            
-                <table class="table table-bordered table-dark">
+            <table class="table table-bordered table-dark">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Editar</th>
+                            <th scope="col">Comentario de: </th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Comentario</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categorias as $categoria)
+                        @foreach ($emails as $email)
                         <tr>
-                            <td>{{$categoria->id}}</th>
-                            <td>{{$categoria->nombre}}</th>
-                            <td><a href="{{route('categoria.edit', ['id'=>$categoria->id])}}"><button type="button" class="btn btn-primary">Editar</button></a></td>
+                            <td>{{$email->id}}</th>
+                            <td>{{$email->nombre.' '.$email->apellidos}}</th>
+                            <td>{{$email->email}}</th>
+                            <td>{{$email->comentarios}}</th>
+                            
+                            <td><a href="{{route('responde', $email)}}"><button type="button" class="btn btn-success">Responder</button></a></td>
+                            
                         </tr>
                         @endforeach
                     </tbody>
                     
                 </table>
-            
             </div>
             <!-- /.content -->
         </div>

@@ -29,26 +29,8 @@ class welcomeController extends Controller
             'sus'=>$susProductos
         ]);
     }
-    public function comentarios(Request $request){
-        $nombre=$request->get('nombre');
-        $apellidos=$request->get('apellidos');
-        $email=$request->get('email');
-        $comentario=$request->get('comentarios');
-
-        $validate = $this->validate($request,[
-            'nombre' => ['required', 'string', 'min:3', 'max:255'],
-            'apellidos' => ['required', 'string', 'min:5', 'max:255'],
-            'email' => ['required', 'string','email', 'min:10', 'max:50'],
-            'comentarios' => ['required', 'string', 'min:10','max:255']
-        ]);
-
-        Contacto::create([
-            'nombre'=>$nombre,
-            'apellidos'=>$apellidos,
-            'email'=>$email,
-            'comentarios'=>$comentario
-        ]);
-
-        return redirect()->route('aboutWelcome')->with(['message'=>'¡Gracias por tus comentarios!']);
+    public function getImage($filename){
+        $file = Storage::disk('productos')->get($filename);
+        return new Response($file,200);
     }
 }

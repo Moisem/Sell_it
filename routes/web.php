@@ -49,6 +49,7 @@ Route::post('/subirproducto/guardar', 'ProductoController@save')->name('producto
 Route::get('/MiPerfil/MisProductos/{id}/editar', 'ProductoController@edit')->name('producto.edit');
 Route::patch('/MiPerfil/MisProductos/{id}', 'ProductoController@update')->name('producto.update');
 Route::get('/image/{filename}', 'ProductoController@getImage')->name('producto.image');
+Route::get('/welcome/{filename}', 'WelcomeController@getImage')->name('welcome.image');
 Route::get('/productos', 'ProductoController@index')->name('productos');
 Route::get('/producto/{id}', 'ProductoController@show')->name('producto.show');
 
@@ -104,4 +105,9 @@ Route::get('/Nosotros', function(){
     return view('info');
 })->name('aboutWelcome');
 
-Route::post('/guardando', 'welcomeController@comentarios')->name('comentariosWelcome');
+
+//emails
+Route::post('/contactanos', 'ContactanosController@store')->name('contactanos');
+Route::get('admin/emails', 'ContactanosController@email')->name('emails');
+Route::get('admin/emails/reponde/{id}', 'ContactanosController@respondec')->name('responde');
+Route::post('admin/emails/reponde/{id}/enviado', 'ContactanosController@responde')->name('email.responde');
