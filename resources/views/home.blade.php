@@ -108,11 +108,16 @@
                 <div class="col-sm-4 promotion">
                     <div class="promotion-card">
                         <div class="title-promotion">
-                            <h3>{{$item->precio}}</h3>
+                            <h3>${{$item->precio}}</h3>
                         </div>
                         <div class="body-promotion">
                             <h3>{{$item->tipo}}</h3>
-                            <hr class="line-basico">
+                            <hr class="line-basico mb-5">
+                            <p>Mejor publicidad</p>
+                            <hr>
+                            <p>Preferencia en el inicio de la pagina</p>
+                            <hr>
+                            <p>Reportes de productos</p>
                         </div>
                         <div class="footer-promotion">
                             <form action="{{route('guardar', $item->id)}}" method="POST">
