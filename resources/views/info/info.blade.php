@@ -50,13 +50,8 @@
                         </p>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div class="col-md-12 contacto content-center m-auto">
                 <form action="{{route('comentarios')}}" method="Post" class="form-contacto" >
-=======
-                <div class="col-md-12 contacto content-center">
-                <form action="{{route('contactanos')}}" method="Post" class="form-contacto" >
->>>>>>> c7911c6d1d56bac0d78f23eca1deb05e29616eda
                     @csrf
                         <p class="h3 text-center"> Contactanos</p>
                         <div class="form-section ">
@@ -138,7 +133,7 @@
                         if(apellidos.length<=5){
                         $('#error2').text('El campo nombre debe tener mas de 5 caracteres').css({"color": "red"});
                         return false;
-                    }else{
+                    }else{ 
                         $('#error2').text('');
                         if(email==''){
                             $('#error3').text('El campo correo debe ser completado').css({"color": "red"});
