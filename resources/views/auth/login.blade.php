@@ -85,6 +85,7 @@
                     <div class="content-inputs">
                         <div  class="input-email">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Correo Electronico" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <p id="error"></p>
                             @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -93,6 +94,7 @@
                         </div>
                         <div class="input-pass">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Contraseña" required autocomplete="current-password">
+                            <p id="error2"></p>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -100,7 +102,7 @@
                         @enderror
                         </div>
                         <div class="btn-login">
-                            <button type="submit" class="btn btn-iniciar">
+                            <button type="submit" class="btn btn-iniciar" id="login">
                                 {{ __('Login') }}
                             </button>
                         </div>
@@ -124,4 +126,32 @@
     </div>
 </div>
 
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('#login').click(function(){
+            var email=$('#email').val();
+            var pass=$('#password').val();
+            var exp=/^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+
+            if(email==''){
+                $('#error').text('El campo nombre debe ser completado').css({"color": "red"});
+                return false;
+            }else{
+                if(!exp.test(email)){
+                    $('#error').text('Debe de ser un correo valido').css({"color": "red"});
+                    return false;
+                }else{
+                    $('#error').text('');
+                    if(pass==''){
+                        $('#error2').text('El campo nombre debe ser completado').css({"color": "red"});
+                        return false;
+                    }
+                }
+            }
+        });
+    });
+</script>
+    
 @endsection
