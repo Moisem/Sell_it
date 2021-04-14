@@ -50,7 +50,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-12 contacto content-center">
+                <div class="col-md-12 contacto content-center m-auto">
                 <form action="{{route('comentarios')}}" method="Post" class="form-contacto" >
                     @csrf
                         <p class="h3 text-center"> Contactanos</p>
@@ -67,6 +67,7 @@
                         <div class="form-section">
                             <br>
                             <input type="text" name="apellidos" id="apellidos" class="@error('apellidos') is-invalid @enderror" placeholder="Apellidos" required autocomplete="apellidos">
+                            <p id="error2"></p>
                             @error('apellidos')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -76,6 +77,7 @@
                         <div class="form-section">
                             <br>
                             <input type="email" id="email" class="@error('email') is-invalid @enderror" name="email" placeholder="Correo electrinico" required autocomplete="email">
+                            <p id="error3"></p>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -85,6 +87,7 @@
                         <div class="form-section">
                             <br>
                             <textarea  id="comentarios" class="Comentarios-contacto @error('comentarios') is-invalid @enderror" name="comentarios" placeholder="Comentarios" required autocomplete="comentarios"></textarea>
+                            <p id="error4"></p>
                             @error('comentarios')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -102,4 +105,61 @@
         </div>
     </div>
 </section>
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        console.log('hola');
+        $('#btnEnviar').click(function(){
+            var nombre = $('#nombre').val();
+            var exp=/^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+            var apellidos = $('#apellidos').val();
+            var email = $('#email').val();
+            var comentarios = $('#comentarios').val();
+
+            if(nombre==''){
+                $('#error').text('El campo nombre debe ser completado').css({"color": "red"});
+                return false;
+            }else{
+                if(nombre.length<=3){
+                    $('#error').text('El campo nombre debe tener mas de 3 caracteres').css({"color": "red"});
+                    return false;
+                }else{
+                    $('#error').text('');
+                    if (apellidos=='') {
+                        $('#error2').text('El campo apellidos debe ser completado').css({"color": "red"});
+                        return false;
+                    } else {
+                        if(apellidos.length<=5){
+                        $('#error2').text('El campo nombre debe tener mas de 5 caracteres').css({"color": "red"});
+                        return false;
+                    }else{
+                        $('#error2').text('');
+                        if(email==''){
+                            $('#error3').text('El campo correo debe ser completado').css({"color": "red"});
+                            return false;
+                        }else{
+                            if(!exp.test(email)){
+                                $('#error3').text('Debe de ser un correo valido').css({"color": "red"});
+                                return false;
+                            }else{
+                                $('#error3').text('');
+                                if(comentarios==''){
+                                $('#error4').text('El campo correo debe ser completado').css({"color": "red"});
+                                return false;
+                                }else{
+                                    if(comentarios.length<=10){
+                                    $('#error4').text('El campo nombre debe tener mas de 10 caracteres').css({"color": "red"});
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        }
+        });
+    });
+</script>
 @endsection
