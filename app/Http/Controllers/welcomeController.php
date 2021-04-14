@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Producto;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
+
 class welcomeController extends Controller
 {
     public function index(){
@@ -26,5 +29,9 @@ class welcomeController extends Controller
             'membrecia'=>$membrecia,
             'sus'=>$susProductos
         ]);
+    }
+    public function getImage($filename){
+        $file = Storage::disk('productos')->get($filename);
+        return new Response($file,200);
     }
 }

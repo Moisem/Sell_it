@@ -14,7 +14,6 @@
                             
                         </div><!-- /.col -->
                     </div><!-- /.row -->
-                   <a href=""> <button type="button" class="btn btn-success">Añadir</button></a>
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->

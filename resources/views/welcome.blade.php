@@ -20,11 +20,8 @@
                     <div class="container">
                         <h1 class="title">SELL IT</h1>
                         <div class="info-content">
-                            <h4 class="title-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                                Soluta quam aspernatur debitis repellendus sit eveniet illum 
-                                praesentium doloremque explicabo, ea e
+                            <h4 class="title-info">
                             </h4>
-                            <a href="{{route('login')}}" class="btn login-index">Iniciar</a>
                         </div>
                     </div>
                    </div>
@@ -40,7 +37,7 @@
                         <div class="col-sm-12 col-md-4 col-lg-3">
                             <div class="content-product">
                                 <div class="img-product">
-                                    <img src="{{route('producto.image',['filename'=>$producto->image])}}" alt="">
+                                <img src="{{route('welcome.image',['filename'=>$producto->image])}}" alt="">
                                 </div>
                                 <div class="body-product">
                                     <div class="header-body">

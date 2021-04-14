@@ -112,6 +112,11 @@
                         <div class="sesion">
                             <p><a href="{{route('register')}}">Crear Cuenta</a></p>
                         </div>
+                        @if (Route::has('password.request'))
+                                    <a class="sesion" href="{{ route('password.request') }}">
+                                        {{ __('¿Olvidaste tu contarseña?') }}
+                                    </a>
+                                @endif
                     </div>
                 </form>
             </div>
