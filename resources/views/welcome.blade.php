@@ -28,7 +28,9 @@
                     <div class="container">
                         <h1 class="title">SELL IT</h1>
                         <div class="info-content">
-                            <h4 class="title-info">
+                            <h4 class="title-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                                Soluta quam aspernatur debitis repellendus sit eveniet illum 
+                                praesentium doloremque explicabo, ea e
                             </h4>
                             <a href="{{route('productos')}}" class="btn login-index">Iniciar</a>
                         </div>
