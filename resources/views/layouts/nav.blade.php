@@ -18,11 +18,17 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('welcome') }}">{{ __('Inicio') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('aboutWelcome')}}">{{ __('Quienes Somos') }}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/home') }}">Inicio</a>
@@ -31,7 +37,7 @@
                         <a class="nav-link" href="{{route('productos')}}">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('quiensesosmos')}}">Quienes Somos</a>
+                        <a class="nav-link" href="{{route('quiensomos')}}">Quienes Somos</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

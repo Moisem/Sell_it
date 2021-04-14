@@ -14,6 +14,14 @@
     <body>
         @extends('layouts.app')
         @section('content')
+        @if(session('message'))
+        <div class="alert alert-success">
+            {{ session('message')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
           <div class="content">
                 <section class="img-index">
                    <div class="izquierda">
@@ -22,6 +30,7 @@
                         <div class="info-content">
                             <h4 class="title-info">
                             </h4>
+                            <a href="{{route('productos')}}" class="btn login-index">Iniciar</a>
                         </div>
                     </div>
                    </div>
@@ -30,31 +39,39 @@
                 </section>
                 <section class="products-index container-fluid">
                     <div class="title-index">
+                        @if($sus)
+                        <h2 class="my-5">Recomendados para ti</h2>
+                        <div class="row">
+                            @foreach ($sus as $product)
+                            <div class="col-sm-12 col-md-4 col-lg-3">
+                                <div class="content-product">
+                                    <div class="img-product">
+                                        <img src="{{route('producto.image',['filename'=>$product->image])}}" alt="">
+                                    </div>
+                                    <div class="body-product">
+                                        <div class="header-body">
+                                            <h5>{{$product->nombre}}</h5>
+                                        </div>
+                                        <div class="body-body">
+                                            <h6>${{$product->precio}}</h6>
+                                            <p>Estado: {{$product->estado}}</p>
+                                            <p>Tipo de Garantia: {{$product->garantia}}</p>
+                                        </div>
+                                        <div class="footer-product">
+                                            <a class="btn ver-mas"href="{{route('producto.show', $product->id)}}">Ver más</a>
+                                            <a href="{{route('miperfil',['id'=> $product->user_id])}}" class="btn btn-perfil">Ver Perfil</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @endif
                         <h2 class="my-5">Compra mas gastando menos</h2>
                     </div>
                     <div class="row">
                         @foreach ($productos as $producto)
-                        <div class="col-sm-12 col-md-4 col-lg-3">
-                            <div class="content-product">
-                                <div class="img-product">
-                                <img src="{{route('welcome.image',['filename'=>$producto->image])}}" alt="">
-                                </div>
-                                <div class="body-product">
-                                    <div class="header-body">
-                                        <h5>{{$producto->nombre}}</h5>
-                                    </div>
-                                    <div class="body-body">
-                                        <h6>${{$producto->precio}}</h6>
-                                        <p>Estado: {{$producto->estado}}</p>
-                                        <p>Tipo de Garantia: {{$producto->garantia}}</p>
-                                    </div>
-                                    <div class="footer-product">
-                                        <a class="btn ver-mas"href="{{route('login')}}">Ver más</a>
-                                        <a href="{{route('login')}}" class="btn btn-perfil">Ver Perfil</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            @include('includes.productos')
                         @endforeach
                     </div>
                 </section>
@@ -63,48 +80,25 @@
                         <h2 class="my-5">Conoce nuetras membrecias y convierte en un socio más</h2>
                     </div>
                     <div class="row content-row content-promotion">
+                        @foreach ($membrecia as $item)
                         <div class="col-sm-4 promotion">
                             <div class="promotion-card">
                                 <div class="title-promotion">
-                                    <h3>$150</h3>
+                                    <h3>{{$item->precio}}</h3>
                                 </div>
                                 <div class="body-promotion">
-                                    <h3>Basico</h3>
+                                    <h3>{{$item->tipo}}</h3>
                                     <hr class="line-basico">
                                 </div>
                                 <div class="footer-promotion">
-                                    <button class="btn elegir">Elegir</button>
+                                    <form action="{{route('guardar', $item->id)}}" method="POST">
+                                        @csrf
+                                        <button class=" btn elegir">Comprar</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 promotion">
-                            <div class="promotion-card">
-                                <div class="title-promotion">
-                                    <h3>$150</h3>
-                                </div>
-                                <div class="body-promotion">
-                                    <h3>Basico</h3>
-                                    <hr class="line-basico">
-                                </div>
-                                <div class="footer-promotion">
-                                    <button class="btn elegir">Elegir</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4 promotion">
-                            <div class="promotion-card">
-                                <div class="title-promotion">
-                                    <h3>$150</h3>
-                                </div>
-                                <div class="body-promotion">
-                                    <h3>Basico</h3>
-                                    <hr class="line-basico">
-                                </div>
-                                <div class="footer-promotion">
-                                    <button class="btn elegir">Elegir</button>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <br><br><br><br><br>
                 </section>

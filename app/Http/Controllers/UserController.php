@@ -7,6 +7,7 @@ use App\User;
 use App\Categoria;
 use App\Comentario;
 use App\Contacto;
+use App\Membresia;
 use Validator;
 use Hash;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -22,7 +24,10 @@ class UserController extends Controller
         $this->middleware('auth');
     }
     public function modificarperfil(){
-        return view('user.modificarperfil');
+        $role=DB::select("SELECT * FROM users AS us, role_user AS rol WHERE rol.user_id=us.id AND rol.role_id=2");
+        return view('user.modificarperfil',[
+            'rol'=>$role
+        ]);
     }
     public function update(Request $request){
         //Conseguir usuario
@@ -129,7 +134,7 @@ class UserController extends Controller
             'comentarios'=>$comentario
         ]);
 
-        return redirect()->route('quiensesosmos')->with(['message'=>'¡Gracias por tus comentarios!']);
+        return redirect()->route('quiensomos')->with(['message'=>'¡Gracias por tus comentarios!']);
     }
 }
 

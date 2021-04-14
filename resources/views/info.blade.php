@@ -13,7 +13,7 @@
 <section class="info">
     <div class="container">
     <div class="row content-row">
-        <div class="col-md-12 topmargin-lg">
+        <div class="col-md-12 t3opmargin-lg">
             <div class="informacion">
                 <h2 class="content-center">SELL-IT</h2>
                 <p>Somos una empresa dedicada al comercio en linea, durante estos ultimos años detectamos que 
@@ -51,13 +51,12 @@
                     </div>
                 </div>
                 <div class="col-md-12 contacto content-center">
-                <form action="{{route('contactanos')}}" method="Post" class="form-contacto" >
+                <form action="{{route('comentariosWelcome')}}" method="Post" class="form-contacto" >
                     @csrf
                         <p class="h3 text-center"> Contactanos</p>
                         <div class="form-section ">
                             <br>
-                            <input type="text" name="nombre"  id="nombre" class="@error('nombre') is-invalid @enderror" placeholder="Nombre" required autocomplete="nombre">
-                            <p id="error"></p>
+                            <input type="text" name="nombre" class="@error('nombre') is-invalid @enderror" placeholder="Nombre" required autocomplete="nombre">
                             @error('nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -66,7 +65,7 @@
                         </div>
                         <div class="form-section">
                             <br>
-                            <input type="text" name="apellidos" id="apellidos" class="@error('apellidos') is-invalid @enderror" placeholder="Apellidos" required autocomplete="apellidos">
+                            <input type="text" name="apellidos" class="@error('apellidos') is-invalid @enderror" placeholder="Apellidos" required autocomplete="apellidos">
                             @error('apellidos')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -75,7 +74,7 @@
                         </div>
                         <div class="form-section">
                             <br>
-                            <input type="email" id="email" class="@error('email') is-invalid @enderror" name="email" placeholder="Correo electrinico" required autocomplete="email">
+                            <input type="email" class="@error('email') is-invalid @enderror" name="email" placeholder="Correo electrinico" required autocomplete="email">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -84,7 +83,7 @@
                         </div>
                         <div class="form-section">
                             <br>
-                            <textarea  id="comentarios" class="Comentarios-contacto @error('comentarios') is-invalid @enderror" name="comentarios" placeholder="Comentarios" required autocomplete="comentarios"></textarea>
+                            <textarea class="Comentarios-contacto @error('comentarios') is-invalid @enderror" name="comentarios" placeholder="Comentarios" required autocomplete="comentarios"></textarea>
                             @error('comentarios')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -93,7 +92,7 @@
                         </div>
                         <div class="form-section buscar">
                             <br>
-                            <button type="submit"  id="btnEnviar" class="btn btn-info" style="width:100%">Enviar</button>
+                            <button type="submit"  class="btn btn-info" style="width:100%">Enviar</button>
                         </div>
                         <br>
                     </form>
